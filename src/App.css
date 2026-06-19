@@ -1,0 +1,47 @@
+body {
+  background-color: #f4f6f9;
+}
+
+.container-box {
+  max-width: 700px;
+  margin: 40px auto;
+}
+
+.card-custom {
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.receita-item {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+body.bg-dark .card,
+body.bg-dark .card-custom {
+  background-color: #212529;
+  color: #f8f9fa;
+}
+
+body.bg-dark .form-control,
+body.bg-dark .form-select {
+  background-color: #343a40;
+  color: #f8f9fa;
+  border-color: #6c757d;
+}
+
+body.bg-dark .form-control::placeholder {
+  color: #adb5bd;
+}
+
+body.bg-dark .navbar {
+  background-color: #343a40 !important;
+}
+
+body.bg-dark .nav-link,
+body.bg-dark .navbar-brand {
+  color: #f8f9fa !important;
+}
