@@ -1,9 +1,21 @@
 import { formatarMoeda } from "./formatadores";
 
-export function exportarRelatorioCSV(dashboard, categorias = []) {
+export function exportarRelatorioCSV(
+  dashboard,
+  categorias = [],
+  dataInicio,
+  dataFim,
+) {
   const linhas = [
     ["Campo", "Valor"],
     ["Gerado em", new Date().toLocaleDateString("pt-BR")],
+
+    [
+      "Período",
+      dataInicio && dataFim
+        ? `${dataInicio} até ${dataFim}`
+        : "Relatório geral",
+    ],
     ["Total de Receitas", formatarMoeda(dashboard.totalReceitas)],
     ["Total de Despesas", formatarMoeda(dashboard.totalDespesas)],
     ["Saldo Atual", formatarMoeda(dashboard.saldo)],

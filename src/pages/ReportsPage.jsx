@@ -5,11 +5,12 @@ import RelatorioGrafico from "../components/RelatorioGrafico";
 import FiltroRelatorio from "../components/FiltroRelatorio";
 import AcoesRelatorio from "../components/AcoesRelatorio";
 import LoadingRelatorio from "../components/LoadingRelatorio";
-import RelatorioCard from "../components/RelatorioCard";
+import RelatorioCards from "../components/RelatorioCards";
 import BotaoExportarCSV from "../components/BotaoExportarCSV";
 import AcoesRelatorioGrupo from "../components/AcoesRelatorioGrupo";
 import TopCategorias from "../components/TopCategorias";
 import BotaoExportarPDF from "../components/BotaoExportarPDF";
+import BotaoImprimirRelatorio from "../components/BotaoImprimirRelatorio";
 
 function ReportsPage() {
   const { mostrarMensagem } = useMensagem();
@@ -52,14 +53,27 @@ function ReportsPage() {
             aoAtualizar={carregarRelatorio}
           />
 
-          <BotaoExportarCSV dashboard={dashboard} categorias={categorias} />
+          <BotaoExportarCSV
+            dashboard={dashboard}
+            categorias={categorias}
+            dataInicio={dataInicio}
+            dataFim={dataFim}
+          />
 
-          <BotaoExportarPDF dashboard={dashboard} categorias={categorias} />
+          <BotaoExportarPDF
+            dashboard={dashboard}
+            categorias={categorias}
+            dataInicio={dataInicio}
+            dataFim={dataFim}
+          />
+
+          <BotaoImprimirRelatorio />
+
         </AcoesRelatorioGrupo>
 
         <LoadingRelatorio carregando={carregando} />
 
-        <RelatorioCard dashboard={dashboard} />
+        <RelatorioCards dashboard={dashboard} />
 
         <RelatorioGrafico
           data={dadosGraficoRelatorio}
