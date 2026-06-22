@@ -1,21 +1,15 @@
 import { Bar } from "react-chartjs-2";
 
-function GraficoCategoriasRelatorio({
-  categorias,
-  data,
-  options,
-}) {
+function GraficoCategoriasRelatorio({ categorias, data, options }) {
   if (!categorias?.length) {
-    return null;
+    return (
+      <p className="text-muted">
+        Nenhuma categoria encontrada para exibir no gráfico.
+      </p>
+    );
   }
 
-  return (
-    <div className="mt-4">
-      <h4 className="mb-3">Despesas por Categoria</h4>
-
-      <Bar data={data} options={options} />
-    </div>
-  );
+  return <Bar data={data} options={options} />;
 }
 
 export default GraficoCategoriasRelatorio;

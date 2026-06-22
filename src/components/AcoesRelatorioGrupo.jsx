@@ -1,9 +1,5 @@
 function AcoesRelatorioGrupo({ children }) {
-  return (
-    <div className="d-flex gap-2 justify-content-end mb-3">
-      {children}
-    </div>
-  );
+  return <div className="acoes-relatorio-grupo">{children}</div>;
 }
 
 export default AcoesRelatorioGrupo;

@@ -6,22 +6,25 @@ function TopCategorias({ categorias }) {
   }
 
   return (
-    <div className="card mt-4">
-      <div className="card-body">
-        <h4>Top Categorias de Despesas</h4>
+    <div className="relatorio-chart-card mt-4">
+      <div className="relatorio-card-header">
+        <div>
+          <h4>Top Categorias de Despesas</h4>
+          <p>Categorias com maiores gastos no período</p>
+        </div>
+      </div>
 
-        <ul className="list-group">
-          {categorias.map((categoria, index) => (
-            <li
-              key={index}
-              className="list-group-item d-flex justify-content-between"
-            >
-              <span>{categoria.categoria}</span>
+      <div className="top-categorias-lista">
+        {categorias.map((categoria, index) => (
+          <div key={index} className="top-categoria-item">
+            <div>
+              <span className="top-categoria-posicao">{index + 1}</span>
+              <strong>{categoria.categoria}</strong>
+            </div>
 
-              <strong>{formatarMoeda(categoria.total)}</strong>
-            </li>
-          ))}
-        </ul>
+            <span>{formatarMoeda(categoria.total)}</span>
+          </div>
+        ))}
       </div>
     </div>
   );

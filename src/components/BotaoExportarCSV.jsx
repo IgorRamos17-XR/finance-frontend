@@ -4,12 +4,12 @@ function BotaoExportarCSV({ dashboard, categorias, dataInicio, dataFim }) {
   return (
     <button
       type="button"
-      className="btn btn-outline-success mb-3"
+      className="btn-relatorio btn-relatorio-csv"
       onClick={() =>
         exportarRelatorioCSV(dashboard, categorias, dataInicio, dataFim)
       }
     >
-      Exportar CSV
+      📄 Exportar CSV
     </button>
   );
 }

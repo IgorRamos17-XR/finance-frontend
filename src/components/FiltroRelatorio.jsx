@@ -7,40 +7,42 @@ function FiltroRelatorio({
   aoLimpar,
 }) {
   return (
-    <div className="row mb-4">
-      <div className="col-md-4">
-        <label className="form-label">Data Inicial</label>
-
-        <input
-          type="date"
-          className="form-control"
-          value={dataInicio}
-          onChange={(e) => setDataInicio(e.target.value)}
-        />
+    <div className="filtro-relatorio-card">
+      <div className="filtro-relatorio-header">
+        <div>
+          <h4>Filtrar período</h4>
+          <p>Escolha um intervalo para analisar seus dados.</p>
+        </div>
       </div>
 
-      <div className="col-md-4">
-        <label className="form-label">Data Final</label>
+      <div className="filtro-relatorio-grid">
+        <div className="filtro-campo">
+          <label>Data inicial</label>
+          <input
+            type="date"
+            value={dataInicio}
+            onChange={(e) => setDataInicio(e.target.value)}
+          />
+        </div>
 
-        <input
-          type="date"
-          className="form-control"
-          value={dataFim}
-          onChange={(e) => setDataFim(e.target.value)}
-        />
-      </div>
+        <div className="filtro-campo">
+          <label>Data final</label>
+          <input
+            type="date"
+            value={dataFim}
+            onChange={(e) => setDataFim(e.target.value)}
+          />
+        </div>
 
-      <div className="col-md-4 d-flex flex-column justify-content-end">
-        <button className="btn btn-primary w-100" onClick={aoFiltrar}>
-          Filtrar Relatório
-        </button>
+        <div className="filtro-botoes">
+          <button type="button" className="btn-filtro-aplicar" onClick={aoFiltrar}>
+            🔎 Filtrar
+          </button>
 
-        <button
-          className="btn btn-outline-secondary w-100 mt-2"
-          onClick={aoLimpar}
-        >
-          Limpar Filtro
-        </button>
+          <button type="button" className="btn-filtro-limpar" onClick={aoLimpar}>
+            ✖ Limpar
+          </button>
+        </div>
       </div>
     </div>
   );

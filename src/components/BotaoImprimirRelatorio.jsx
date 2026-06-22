@@ -6,10 +6,10 @@ function BotaoImprimirRelatorio() {
   return (
     <button
       type="button"
-      className="btn btn-outline-dark"
+      className="btn-relatorio btn-relatorio-imprimir"
       onClick={imprimir}
     >
-      Imprimir Relatório
+      🖨️ Imprimir
     </button>
   );
 }

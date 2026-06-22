@@ -1,5 +1,6 @@
 import { useCallback, useState } from "react";
 import dashboardService from "../services/dashboardService";
+import { formatarMoeda } from "../utils/formatadores";
 
 function useReports(mostrarMensagem) {
   const [dashboard, setDashboard] = useState({
@@ -41,20 +42,41 @@ function useReports(mostrarMensagem) {
           dashboard.totalDespesas,
           dashboard.saldo,
         ],
+
+        backgroundColor: ["#22c55e", "#ef4444", "#2563eb"],
+        borderRadius: 10,
+        borderSkipped: false,
       },
     ],
   };
 
   const opcoesGraficoRelatorio = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
-        display: true,
+        display: false,
+      },
+      tooltip: {
+        callbacks: {
+          label: (context) => formatarMoeda(context.raw),
+        },
       },
     },
     scales: {
       y: {
         beginAtZero: true,
+        grid: {
+          color: "#e5e7eb",
+        },
+        ticks: {
+          callback: (value) => formatarMoeda(value),
+        },
+      },
+      x: {
+        grid: {
+          display: false,
+        },
       },
     },
   };
@@ -95,26 +117,58 @@ function useReports(mostrarMensagem) {
     await carregarRelatorio();
   }, [carregarRelatorio]);
 
+  const coresCategoriasRelatorio = [
+    "#2563eb",
+    "#dc2626",
+    "#16a34a",
+    "#f97316",
+    "#7c3aed",
+    "#0891b2",
+    "#db2777",
+    "#65a30d",
+  ];
+
   const dadosGraficoCategoriasRelatorio = {
-    labels: categorias.map((item) => item.categoria),
+    labels: (categorias || []).map((item) => item.categoria),
     datasets: [
       {
         label: "Despesas por Categoria",
-        data: categorias.map((item) => item.total),
+        data: (categorias || []).map((item) => item.total),
+        backgroundColor: coresCategoriasRelatorio,
+        borderRadius: 10,
+        borderSkipped: false,
       },
     ],
   };
 
   const opcoesGraficoCategoriasRelatorio = {
     responsive: true,
+    maintainAspectRatio: false,
+    indexAxis: "y",
     plugins: {
       legend: {
-        display: true,
+        display: false,
+      },
+      tooltip: {
+        callbacks: {
+          label: (context) => formatarMoeda(context.raw),
+        },
       },
     },
     scales: {
-      y: {
+      x: {
         beginAtZero: true,
+        grid: {
+          color: "#e5e7eb",
+        },
+        ticks: {
+          callback: (value) => formatarMoeda(value),
+        },
+      },
+      y: {
+        grid: {
+          display: false,
+        },
       },
     },
   };

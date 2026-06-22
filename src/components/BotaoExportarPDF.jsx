@@ -1,25 +1,15 @@
 import { exportarRelatorioPDF } from "../utils/exportarPDF";
 
-function BotaoExportarPDF({
-  dashboard,
-  categorias,
-  dataInicio,
-  dataFim,
-}) {
+function BotaoExportarPDF({ dashboard, categorias, dataInicio, dataFim }) {
   return (
     <button
       type="button"
-      className="btn btn-danger"
+      className="btn-relatorio btn-relatorio-pdf"
       onClick={() =>
-        exportarRelatorioPDF(
-          dashboard,
-          categorias,
-          dataInicio,
-          dataFim
-        )
+        exportarRelatorioPDF(dashboard, categorias, dataInicio, dataFim)
       }
     >
-      Exportar PDF
+      📕 Exportar PDF
     </button>
   );
 }
