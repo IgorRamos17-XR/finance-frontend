@@ -1,25 +1,12 @@
-import RelatorioCard from "./RelatorioCard";
-import { formatarMoeda } from "../utils/formatadores";
-
-function RelatorioCards({ dashboard }) {
+function RelatorioCard({ titulo, valor }) {
   return (
-    <div className="row">
-      <RelatorioCard
-        titulo="Total de Receitas"
-        valor={formatarMoeda(dashboard.totalReceitas)}
-      />
-
-      <RelatorioCard
-        titulo="Total de Despesas"
-        valor={formatarMoeda(dashboard.totalDespesas)}
-      />
-
-      <RelatorioCard
-        titulo="Saldo Atual"
-        valor={formatarMoeda(dashboard.saldo)}
-      />
+    <div className="col-md-4">
+      <div className="card p-3 mb-3">
+        <h5>{titulo}</h5>
+        <p>{valor}</p>
+      </div>
     </div>
   );
 }
 
-export default RelatorioCards;
+export default RelatorioCard;

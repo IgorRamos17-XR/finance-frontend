@@ -48,8 +48,7 @@ function useAuth() {
 
       mostrarMensagem("Login realizado com sucesso!", "success");
       navigate("/app");
-    } catch (error) {
-      console.log(error);
+    } catch {
       mostrarMensagem("Erro no login", "danger");
     } finally {
       setCarregandoLogin(false);
@@ -79,8 +78,7 @@ function useAuth() {
       setEmailCadastro("");
       setSenhaCadastro("");
       setModoCadastro(false);
-    } catch (error) {
-      console.log(error);
+    } catch {
       mostrarMensagem("Erro ao cadastrar usuário.", "danger");
     } finally {
       setCarregandoCadastro(false);

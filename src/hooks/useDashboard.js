@@ -26,8 +26,7 @@ function useDashboard() {
     );
 
     setDashboard(response);
-  } catch (error) {
-    console.log(error);
+  } catch {
     mostrarMensagem("Erro ao buscar resumo por período", "danger");
   }
 }

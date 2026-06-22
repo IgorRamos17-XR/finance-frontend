@@ -6,7 +6,7 @@ function Menu() {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light rounded mb-4 px-3">
-      <span className="navbar-brand fw-bold">Finance Control</span>
+      <span className="navbar-brand fw-bold">Controle Financeiro</span>
 
       <span className="badge bg-secondary me-3">
         {temaEscuro ? "Tema escuro" : "Tema claro"}

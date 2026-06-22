@@ -9,7 +9,7 @@ function HomePage() {
         Organize suas receitas, despesas e acompanhe seu saldo.
       </p>
 
-      <Link to="/app" className="btn btn-primary">
+      <Link to="/login" className="btn btn-primary">
         Acessar sistema
       </Link>
     </div>

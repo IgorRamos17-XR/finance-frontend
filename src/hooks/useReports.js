@@ -21,9 +21,7 @@ function useReports(mostrarMensagem) {
       const categoriasResponse = await dashboardService.despesasPorCategoria();
 
       setCategorias(categoriasResponse || []);
-
-    } catch (error) {
-      console.log(error);
+    } catch {
       mostrarMensagem("Erro ao carregar relatório", "danger");
     } finally {
       setCarregando(false);
@@ -76,9 +74,14 @@ function useReports(mostrarMensagem) {
       );
 
       setDashboard(response);
+
+      const categoriasResponse =
+        await dashboardService.despesasPorCategoriaPeriodo(dataInicio, dataFim);
+
+      setCategorias(categoriasResponse || []);
+
       mostrarMensagem("Relatório filtrado com sucesso!", "success");
-    } catch (error) {
-      console.log(error);
+    } catch {
       mostrarMensagem("Erro ao filtrar relatório", "danger");
     } finally {
       setCarregando(false);
@@ -91,6 +94,30 @@ function useReports(mostrarMensagem) {
 
     await carregarRelatorio();
   }, [carregarRelatorio]);
+
+  const dadosGraficoCategoriasRelatorio = {
+    labels: categorias.map((item) => item.categoria),
+    datasets: [
+      {
+        label: "Despesas por Categoria",
+        data: categorias.map((item) => item.total),
+      },
+    ],
+  };
+
+  const opcoesGraficoCategoriasRelatorio = {
+    responsive: true,
+    plugins: {
+      legend: {
+        display: true,
+      },
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+      },
+    },
+  };
 
   return {
     dashboard,
@@ -105,6 +132,8 @@ function useReports(mostrarMensagem) {
     filtrarRelatorio,
     limparFiltroRelatorio,
     categorias,
+    dadosGraficoCategoriasRelatorio,
+    opcoesGraficoCategoriasRelatorio,
   };
 }
 

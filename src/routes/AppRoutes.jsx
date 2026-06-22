@@ -7,11 +7,13 @@ import NotFoundPage from "../pages/NotFoundPage";
 import PrivateLayout from "../layouts/PrivateLayout";
 import SettingsPage from "../pages/SettingsPage";
 import ReportsPage from "../pages/ReportsPage";
+import LoginPage from "../pages/LoginPage";
 
 function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
+      <Route path="/login" element={<LoginPage />} />
 
       <Route
         element={

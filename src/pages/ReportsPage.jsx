@@ -11,6 +11,9 @@ import AcoesRelatorioGrupo from "../components/AcoesRelatorioGrupo";
 import TopCategorias from "../components/TopCategorias";
 import BotaoExportarPDF from "../components/BotaoExportarPDF";
 import BotaoImprimirRelatorio from "../components/BotaoImprimirRelatorio";
+import TituloImpressao from "../components/TituloImpressao";
+import PeriodoImpressao from "../components/PeriodoImpressao";
+import GraficoCategoriasRelatorio from "../components/GraficoCategoriasRelatorio";
 
 function ReportsPage() {
   const { mostrarMensagem } = useMensagem();
@@ -28,6 +31,8 @@ function ReportsPage() {
     filtrarRelatorio,
     limparFiltroRelatorio,
     categorias,
+    dadosGraficoCategoriasRelatorio,
+    opcoesGraficoCategoriasRelatorio,
   } = useReports(mostrarMensagem);
 
   useEffect(() => {
@@ -37,6 +42,8 @@ function ReportsPage() {
   return (
     <div className="card shadow-sm">
       <div className="card-body">
+        <TituloImpressao />
+        <PeriodoImpressao dataInicio={dataInicio} dataFim={dataFim} />
         <h2 className="mb-4">Relatórios</h2>
 
         <FiltroRelatorio
@@ -68,7 +75,6 @@ function ReportsPage() {
           />
 
           <BotaoImprimirRelatorio />
-
         </AcoesRelatorioGrupo>
 
         <LoadingRelatorio carregando={carregando} />
@@ -81,6 +87,12 @@ function ReportsPage() {
         />
 
         <TopCategorias categorias={categorias} />
+
+        <GraficoCategoriasRelatorio
+          categorias={categorias}
+          data={dadosGraficoCategoriasRelatorio}
+          options={opcoesGraficoCategoriasRelatorio}
+        />
       </div>
     </div>
   );

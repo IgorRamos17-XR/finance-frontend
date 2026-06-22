@@ -58,8 +58,7 @@ function useReceitas() {
 
       limparFormularioReceita();
       await atualizarDados();
-    } catch (error) {
-      console.log(error);
+    } catch {
       mostrarMensagem("Erro ao cadastrar receita", "danger");
     } finally {
       setCarregandoReceita(false);
@@ -91,8 +90,7 @@ function useReceitas() {
 
       limparFormularioReceita();
       await atualizarDados();
-    } catch (error) {
-      console.log(error);
+    } catch {
       mostrarMensagem("Erro ao atualizar receita", "danger");
     } finally {
       setCarregandoReceita(false);
@@ -106,8 +104,7 @@ function useReceitas() {
       mostrarMensagem("Receita excluída com sucesso!", "success");
 
       await atualizarDados();
-    } catch (error) {
-      console.log(error);
+    } catch {
       mostrarMensagem("Erro ao excluir receita", "danger");
     }
   }

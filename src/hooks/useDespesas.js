@@ -53,8 +53,7 @@ function useDespesas() {
 
       limparFormularioDespesa();
       await atualizarDados();
-    } catch (error) {
-      console.log(error);
+    } catch {
       mostrarMensagem("Erro ao atualizar despesa", "danger");
     } finally {
       setCarregandoDespesa(false);
@@ -68,8 +67,7 @@ function useDespesas() {
       mostrarMensagem("Despesa excluída com sucesso!", "success");
 
       await atualizarDados();
-    } catch (error) {
-      console.log(error);
+    } catch {
       mostrarMensagem("Erro ao excluir despesa", "danger");
     }
   }
@@ -116,8 +114,7 @@ function useDespesas() {
 
       limparFormularioDespesa();
       await atualizarDados();
-    } catch (error) {
-      console.log(error);
+    } catch {
       mostrarMensagem("Erro ao cadastrar despesa", "danger");
     } finally {
       setCarregandoDespesa(false);
