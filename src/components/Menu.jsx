@@ -5,18 +5,20 @@ function Menu() {
   const { temaEscuro, alternarTema } = useTemaContext();
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light rounded mb-4 px-3">
-      <span className="navbar-brand fw-bold">Controle Financeiro</span>
+    <nav className="menu-financeiro">
+      <div className="menu-logo">
+        <span className="menu-logo-icon">💰</span>
+        <div>
+          <strong>Controle Financeiro</strong>
+          <small>{temaEscuro ? "Tema escuro ativo" : "Tema claro ativo"}</small>
+        </div>
+      </div>
 
-      <span className="badge bg-secondary me-3">
-        {temaEscuro ? "Tema escuro" : "Tema claro"}
-      </span>
-
-      <div className="navbar-nav">
+      <div className="menu-links">
         <NavLink
           to="/app"
           className={({ isActive }) =>
-            isActive ? "nav-link active fw-bold" : "nav-link"
+            isActive ? "menu-link menu-link-active" : "menu-link"
           }
         >
           Dashboard
@@ -25,7 +27,7 @@ function Menu() {
         <NavLink
           to="/perfil"
           className={({ isActive }) =>
-            isActive ? "nav-link active fw-bold" : "nav-link"
+            isActive ? "menu-link menu-link-active" : "menu-link"
           }
         >
           Meu Perfil
@@ -34,7 +36,7 @@ function Menu() {
         <NavLink
           to="/configuracoes"
           className={({ isActive }) =>
-            isActive ? "nav-link active fw-bold" : "nav-link"
+            isActive ? "menu-link menu-link-active" : "menu-link"
           }
         >
           Configurações
@@ -43,20 +45,16 @@ function Menu() {
         <NavLink
           to="/relatorios"
           className={({ isActive }) =>
-            isActive ? "nav-link active fw-bold" : "nav-link"
+            isActive ? "menu-link menu-link-active" : "menu-link"
           }
         >
           Relatórios
         </NavLink>
-
-        <button
-          type="button"
-          className="btn btn-sm btn-outline-secondary ms-auto"
-          onClick={alternarTema}
-        >
-          {temaEscuro ? "Tema claro" : "Tema escuro"}
-        </button>
       </div>
+
+      <button type="button" className="menu-tema-btn" onClick={alternarTema}>
+        {temaEscuro ? "☀️ Tema claro" : "🌙 Tema escuro"}
+      </button>
     </nav>
   );
 }
