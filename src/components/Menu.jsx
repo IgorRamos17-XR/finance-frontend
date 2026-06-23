@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import useTemaContext from "../hooks/useTemaContext";
+import { FiHome, FiUser, FiSettings, FiBarChart2 } from "react-icons/fi";
 
 function Menu() {
   const { temaEscuro, alternarTema } = useTemaContext();
@@ -21,7 +22,8 @@ function Menu() {
             isActive ? "menu-link menu-link-active" : "menu-link"
           }
         >
-          Dashboard
+          <FiHome size={18} />
+          <span>Dashboard</span>
         </NavLink>
 
         <NavLink
@@ -30,7 +32,8 @@ function Menu() {
             isActive ? "menu-link menu-link-active" : "menu-link"
           }
         >
-          Meu Perfil
+          <FiUser size={18} />
+          <span>Meu Perfil</span>
         </NavLink>
 
         <NavLink
@@ -39,7 +42,8 @@ function Menu() {
             isActive ? "menu-link menu-link-active" : "menu-link"
           }
         >
-          Configurações
+           <FiSettings size={18} />
+  <span>Configurações</span>
         </NavLink>
 
         <NavLink
@@ -48,7 +52,8 @@ function Menu() {
             isActive ? "menu-link menu-link-active" : "menu-link"
           }
         >
-          Relatórios
+          <FiBarChart2 size={18} />
+  <span>Relatórios</span>
         </NavLink>
       </div>
 

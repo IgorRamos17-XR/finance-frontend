@@ -1,85 +1,107 @@
+import { FiTrendingUp, FiTrendingDown, FiDollarSign } from "react-icons/fi";
+
 function Dashboard({
-    dashboard,
-    formatarMoeda,
-    inicioFiltro,
-    setInicioFiltro,
-    fimFiltro,
-    setFimFiltro,
-    buscarDashboardPorPeriodo,
-    limparFiltroDashboard,
-    }) {
-    return (
-        <>
-        <div className="row text-center mb-4">
-            <div className="col-md-4 mb-3">
-            <div className="card p-3 shadow-sm">
-                <h5>Total Receitas</h5>
-                <h4 className="text-success">
-                {formatarMoeda(dashboard.totalReceitas)}
-                </h4>
-            </div>
-            </div>
+  dashboard,
+  formatarMoeda,
+  inicioFiltro,
+  setInicioFiltro,
+  fimFiltro,
+  setFimFiltro,
+  buscarDashboardPorPeriodo,
+  limparFiltroDashboard,
+}) {
+  return (
+    <section className="dashboard-resumo">
+      <div className="dashboard-cards-grid">
+        <div className="dashboard-card dashboard-card-receita">
+          <div className="dashboard-card-icon">
+            <FiTrendingUp size={28} />
+          </div>
 
-            <div className="col-md-4 mb-3">
-            <div className="card p-3 shadow-sm">
-                <h5>Total Despesas</h5>
-                <h4 className="text-danger">
-                {formatarMoeda(dashboard.totalDespesas)}
-                </h4>
-            </div>
-            </div>
-
-            <div className="col-md-4 mb-3">
-            <div className="card p-3 shadow-sm">
-                <h5>Saldo</h5>
-                <h4
-                className={
-                    dashboard.saldo >= 0 ? "text-primary" : "text-danger"
-                }
-                >
-                {formatarMoeda(dashboard.saldo)}
-                </h4>
-            </div>
-            </div>
+          <div>
+            <p>Total de Receitas</p>
+            <strong>{formatarMoeda(dashboard.totalReceitas)}</strong>
+            <span>Entradas registradas</span>
+          </div>
         </div>
 
-        <div className="row mb-4">
-            <div className="col-md-5 mb-2">
-            <input
-                type="date"
-                className="form-control"
-                value={inicioFiltro}
-                onChange={(e) => setInicioFiltro(e.target.value)}
-            />
-            </div>
+        <div className="dashboard-card dashboard-card-despesa">
+          <div className="dashboard-card-icon">
+            <FiTrendingDown size={28} />
+          </div>
 
-            <div className="col-md-5 mb-2">
-            <input
-                type="date"
-                className="form-control"
-                value={fimFiltro}
-                onChange={(e) => setFimFiltro(e.target.value)}
-            />
-            </div>
+          <div>
+            <p>Total de Despesas</p>
+            <strong>{formatarMoeda(dashboard.totalDespesas)}</strong>
+            <span>Saídas registradas</span>
+          </div>
+        </div>
 
-            <div className="col-md-2 mb-2">
+        <div
+          className={
+            dashboard.saldo >= 0
+              ? "dashboard-card dashboard-card-saldo"
+              : "dashboard-card dashboard-card-negativo"
+          }
+        >
+          <div className="dashboard-card-icon">
+            <FiDollarSign size={28} />
+          </div>
+
+          <div>
+            <p>Saldo Atual</p>
+            <strong>{formatarMoeda(dashboard.saldo)}</strong>
+            <span>{dashboard.saldo >= 0 ? "Saldo positivo" : "Saldo negativo"}</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="dashboard-filtro-card">
+        <div className="dashboard-filtro-info">
+          <h4>Filtrar dashboard</h4>
+          <p>Escolha um período para analisar seu resumo financeiro.</p>
+        </div>
+
+        <div className="dashboard-filtro-grid">
+          <div className="dashboard-filtro-campo">
+            <label>Data inicial</label>
+            <input
+              type="date"
+              value={inicioFiltro}
+              onChange={(e) => setInicioFiltro(e.target.value)}
+            />
+          </div>
+
+          <div className="dashboard-filtro-campo">
+            <label>Data final</label>
+            <input
+              type="date"
+              value={fimFiltro}
+              onChange={(e) => setFimFiltro(e.target.value)}
+            />
+          </div>
+
+          <div className="dashboard-filtro-botoes">
             <button
-                className="btn btn-dark w-100 mb-2"
-                onClick={buscarDashboardPorPeriodo}
+              type="button"
+              className="dashboard-btn-filtrar"
+              onClick={buscarDashboardPorPeriodo}
             >
-                Filtrar
+              🔎 Filtrar
             </button>
 
             <button
-                className="btn btn-secondary w-100"
-                onClick={limparFiltroDashboard}
+              type="button"
+              className="dashboard-btn-limpar"
+              onClick={limparFiltroDashboard}
             >
-                Limpar
+              ✖ Limpar
             </button>
-            </div>
+          </div>
         </div>
-        </>
-    );
-    }
+      </div>
+    </section>
+  );
+}
 
-    export default Dashboard;
+export default Dashboard;
