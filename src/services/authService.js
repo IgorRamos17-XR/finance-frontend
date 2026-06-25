@@ -10,6 +10,18 @@ const authService = {
         const response = await api.post("/Auth/register", dados);
         return response.data;
     },
-    };
+    
+
+    async forgotPassword(dados) {
+  const response = await api.post("/Auth/forgot-password", dados);
+  return response.data;
+},
+
+async resetPassword(dados) {
+  const response = await api.post("/Auth/reset-password", dados);
+  return response.data;
+},
+
+};
 
 export default authService;

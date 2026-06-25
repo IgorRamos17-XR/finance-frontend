@@ -20,6 +20,20 @@ function LoginPage() {
     carregandoCadastro,
     fazerLogin,
     cadastrarUsuario,
+    limparCamposLogin,
+    limparCamposCadastro,
+    modoRecuperarSenha,
+    setModoRecuperarSenha,
+    emailRecuperacao,
+    setEmailRecuperacao,
+    tokenRecuperacao,
+    setTokenRecuperacao,
+    novaSenha,
+    setNovaSenha,
+    carregandoRecuperacao,
+    solicitarRecuperacaoSenha,
+    redefinirSenha,
+    limparCamposRecuperacao,
   } = useAuthContext();
 
   const { mostrarMensagem } = useMensagem();
@@ -42,6 +56,22 @@ function LoginPage() {
       setSenhaCadastro={setSenhaCadastro}
       carregandoLogin={carregandoLogin}
       carregandoCadastro={carregandoCadastro}
+      limparCamposLogin={limparCamposLogin}
+      limparCamposCadastro={limparCamposCadastro}
+      modoRecuperarSenha={modoRecuperarSenha}
+      setModoRecuperarSenha={setModoRecuperarSenha}
+      emailRecuperacao={emailRecuperacao}
+      setEmailRecuperacao={setEmailRecuperacao}
+      tokenRecuperacao={tokenRecuperacao}
+      setTokenRecuperacao={setTokenRecuperacao}
+      novaSenha={novaSenha}
+      setNovaSenha={setNovaSenha}
+      carregandoRecuperacao={carregandoRecuperacao}
+      solicitarRecuperacaoSenha={(e) =>
+        solicitarRecuperacaoSenha(e, mostrarMensagem)
+      }
+      redefinirSenha={(e) => redefinirSenha(e, mostrarMensagem)}
+      limparCamposRecuperacao={limparCamposRecuperacao}
     />
   );
 }

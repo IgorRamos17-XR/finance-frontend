@@ -7,6 +7,7 @@ import { AuthProvider } from "./contexts/AuthContext";
 import { MensagemProvider } from "./contexts/MensagemContext";
 import { ConfirmProvider } from "./contexts/ConfirmContext";
 import { TemaProvider } from "./contexts/TemaContext";
+import MensagemGlobal from "./components/MensagemGlobal";
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -16,6 +17,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <AuthProvider>
       <MensagemProvider>
+        <MensagemGlobal />
         <ConfirmProvider>
           <TemaProvider>
             <AppRoutes />

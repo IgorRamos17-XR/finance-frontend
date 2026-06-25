@@ -17,6 +17,20 @@ function AuthPage({
   setSenhaCadastro,
   carregandoLogin,
   carregandoCadastro,
+  limparCamposLogin,
+  limparCamposCadastro,
+  modoRecuperarSenha,
+  setModoRecuperarSenha,
+  emailRecuperacao,
+  setEmailRecuperacao,
+  tokenRecuperacao,
+  setTokenRecuperacao,
+  novaSenha,
+  setNovaSenha,
+  carregandoRecuperacao,
+  solicitarRecuperacaoSenha,
+  redefinirSenha,
+  limparCamposRecuperacao,
 }) {
   return (
     <AuthForm
@@ -36,6 +50,20 @@ function AuthPage({
       setSenhaCadastro={setSenhaCadastro}
       carregandoLogin={carregandoLogin}
       carregandoCadastro={carregandoCadastro}
+      limparCamposLogin={limparCamposLogin}
+      limparCamposCadastro={limparCamposCadastro}
+      modoRecuperarSenha={modoRecuperarSenha}
+      setModoRecuperarSenha={setModoRecuperarSenha}
+      emailRecuperacao={emailRecuperacao}
+      setEmailRecuperacao={setEmailRecuperacao}
+      tokenRecuperacao={tokenRecuperacao}
+      setTokenRecuperacao={setTokenRecuperacao}
+      novaSenha={novaSenha}
+      setNovaSenha={setNovaSenha}
+      carregandoRecuperacao={carregandoRecuperacao}
+      solicitarRecuperacaoSenha={solicitarRecuperacaoSenha}
+      redefinirSenha={redefinirSenha}
+      limparCamposRecuperacao={limparCamposRecuperacao}
     />
   );
 }
