@@ -11,9 +11,9 @@ function Dashboard({
   limparFiltroDashboard,
 }) {
   return (
-    <section className="dashboard-resumo">
+    <section className="dashboard-resumo fade-up">
       <div className="dashboard-cards-grid">
-        <div className="dashboard-card dashboard-card-receita">
+        <div className="dashboard-card dashboard-card-receita scale-in">
           <div className="dashboard-card-icon">
             <FiTrendingUp size={28} />
           </div>
@@ -25,7 +25,7 @@ function Dashboard({
           </div>
         </div>
 
-        <div className="dashboard-card dashboard-card-despesa">
+        <div className="dashboard-card dashboard-card-despesa scale-in">
           <div className="dashboard-card-icon">
             <FiTrendingDown size={28} />
           </div>
@@ -39,10 +39,10 @@ function Dashboard({
 
         <div
           className={
-            dashboard.saldo >= 0
-              ? "dashboard-card dashboard-card-saldo"
-              : "dashboard-card dashboard-card-negativo"
-          }
+  dashboard.saldo >= 0
+    ? "dashboard-card dashboard-card-saldo scale-in"
+    : "dashboard-card dashboard-card-negativo scale-in"
+}
         >
           <div className="dashboard-card-icon">
             <FiDollarSign size={28} />

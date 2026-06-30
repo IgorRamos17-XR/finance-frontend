@@ -24,8 +24,10 @@ function PainelFinanceiro({
 }) {
   return (
     <>
-      <CarregandoDados carregando={carregandoDados} />
-
+      {carregandoDados ? (
+  <CarregandoDados carregando={carregandoDados} />
+) : (
+ <>
       <Dashboard
         dashboard={dashboard}
         formatarMoeda={formatarMoeda}
@@ -50,7 +52,8 @@ function PainelFinanceiro({
         formatarMoeda={formatarMoeda}
       />
     </>
-  );
+)}
+  </>
+);
 }
-
 export default PainelFinanceiro;

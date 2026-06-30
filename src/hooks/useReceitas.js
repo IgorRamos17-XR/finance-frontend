@@ -8,10 +8,25 @@ function useReceitas() {
   const [valor, setValor] = useState("");
   const [categoria, setCategoria] = useState("");
   const [data, setData] = useState("");
+  const [recorrente, setRecorrente] = useState(false);
+  const [frequenciaRecorrencia, setFrequenciaRecorrencia] = useState("");
+  const [proximaRecorrencia, setProximaRecorrencia] = useState("");
   const [editandoId, setEditandoId] = useState(null);
   const [carregandoReceita, setCarregandoReceita] = useState(false);
   const [filtroReceita, setFiltroReceita] = useState("");
   const [ordemReceitas, setOrdemReceitas] = useState("desc");
+  const [paginaReceitas, setPaginaReceitas] = useState(1);
+  const itensPorPaginaReceitas = 5;
+
+  function alterarFiltroReceita(valor) {
+    setFiltroReceita(valor);
+    setPaginaReceitas(1);
+  }
+
+  function alterarOrdemReceitas(valor) {
+    setOrdemReceitas(valor);
+    setPaginaReceitas(1);
+  }
 
   const receitasFiltradas = receitas
     .filter((receita) =>
@@ -23,12 +38,27 @@ function useReceitas() {
         : new Date(a.data) - new Date(b.data),
     );
 
+  const totalPaginasReceitas = Math.ceil(
+    receitasFiltradas.length / itensPorPaginaReceitas,
+  );
+
+  const inicioReceitas = (paginaReceitas - 1) * itensPorPaginaReceitas;
+  const fimReceitas = inicioReceitas + itensPorPaginaReceitas;
+
+  const receitasPaginadas = receitasFiltradas.slice(
+    inicioReceitas,
+    fimReceitas,
+  );
+
   function limparFormularioReceita() {
     setDescricao("");
     setValor(null);
     setCategoria("");
     setData("");
     setEditandoId(null);
+    setRecorrente(false);
+    setFrequenciaRecorrencia("");
+    setProximaRecorrencia("");
   }
 
   async function cadastrarReceita(e, atualizarDados, mostrarMensagem) {
@@ -52,6 +82,9 @@ function useReceitas() {
         valor: Number(valor),
         categoria,
         data,
+        recorrente,
+        frequenciaRecorrencia: recorrente ? frequenciaRecorrencia : null,
+        proximaRecorrencia: recorrente ? proximaRecorrencia : null,
       });
 
       mostrarMensagem("Receita cadastrada com sucesso!", "success");
@@ -84,6 +117,9 @@ function useReceitas() {
         valor: Number(valor),
         categoria,
         data,
+        recorrente,
+        frequenciaRecorrencia: recorrente ? frequenciaRecorrencia : null,
+        proximaRecorrencia: recorrente ? proximaRecorrencia : null,
       });
 
       mostrarMensagem("Receita atualizada com sucesso!", "success");
@@ -125,14 +161,24 @@ function useReceitas() {
     carregandoReceita,
     setCarregandoReceita,
     filtroReceita,
-    setFiltroReceita,
+    setFiltroReceita: alterarFiltroReceita,
     ordemReceitas,
-    setOrdemReceitas,
+    setOrdemReceitas: alterarOrdemReceitas,
     receitasFiltradas,
     limparFormularioReceita,
     cadastrarReceita,
     editarReceita,
     excluirReceita,
+    paginaReceitas,
+    setPaginaReceitas,
+    totalPaginasReceitas,
+    receitasPaginadas,
+    recorrente,
+setRecorrente,
+frequenciaRecorrencia,
+setFrequenciaRecorrencia,
+proximaRecorrencia,
+setProximaRecorrencia,
   };
 }
 

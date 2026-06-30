@@ -35,11 +35,11 @@ function Graficos({
   opcoesGraficoCategorias,
 }) {
   return (
-    <section className="graficos-section">
+    <section className="graficos-section fade-up">
       <h3 className="graficos-titulo">Análises Financeiras</h3>
 
       <div className="graficos-grid">
-        <div className="grafico-card">
+        <div className="grafico-card scale-in">
           <h4>Resumo Financeiro</h4>
           <p className="grafico-subtitulo">
             Total de receitas, despesas e saldo
@@ -56,7 +56,7 @@ function Graficos({
           )}
         </div>
 
-        <div className="grafico-card">
+        <div className="grafico-card scale-in">
           <h4>Evolução Financeira</h4>
           <p className="grafico-subtitulo">
             Receitas e despesas ao longo do tempo
@@ -76,7 +76,7 @@ function Graficos({
           )}
         </div>
 
-        <div className="grafico-card grafico-card-pizza">
+        <div className="grafico-card grafico-card-pizza scale-in">
           <h4>Despesas por Categoria</h4>
           <p className="grafico-subtitulo">
             Distribuição das despesas por categoria

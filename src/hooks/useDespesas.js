@@ -8,12 +8,29 @@ function useDespesas() {
   const [valorDespesa, setValorDespesa] = useState("");
   const [categoriaDespesa, setCategoriaDespesa] = useState("");
   const [dataDespesa, setDataDespesa] = useState("");
+  const [recorrenteDespesa, setRecorrenteDespesa] = useState(false);
+  const [frequenciaRecorrenciaDespesa, setFrequenciaRecorrenciaDespesa] =
+    useState("");
+  const [proximaRecorrenciaDespesa, setProximaRecorrenciaDespesa] =
+    useState("");
 
   const [editandoDespesaId, setEditandoDespesaId] = useState(null);
 
   const [carregandoDespesa, setCarregandoDespesa] = useState(false);
   const [filtroDespesa, setFiltroDespesa] = useState("");
   const [ordemDespesas, setOrdemDespesas] = useState("desc");
+  const [paginaDespesas, setPaginaDespesas] = useState(1);
+  const itensPorPaginaDespesas = 5;
+
+  function alterarFiltroDespesa(valor) {
+    setFiltroDespesa(valor);
+    setPaginaDespesas(1);
+  }
+
+  function alterarOrdemDespesas(valor) {
+    setOrdemDespesas(valor);
+    setPaginaDespesas(1);
+  }
 
   function limparFormularioDespesa() {
     setDescricaoDespesa("");
@@ -21,6 +38,9 @@ function useDespesas() {
     setCategoriaDespesa("");
     setDataDespesa("");
     setEditandoDespesaId(null);
+    setRecorrenteDespesa(false);
+    setFrequenciaRecorrenciaDespesa("");
+    setProximaRecorrenciaDespesa("");
   }
 
   async function editarDespesa(id, atualizarDados, mostrarMensagem) {
@@ -47,6 +67,13 @@ function useDespesas() {
         valor: Number(valorDespesa),
         categoria: categoriaDespesa,
         data: dataDespesa,
+        recorrente: recorrenteDespesa,
+        frequenciaRecorrencia: recorrenteDespesa
+          ? frequenciaRecorrenciaDespesa
+          : null,
+        proximaRecorrencia: recorrenteDespesa
+          ? proximaRecorrenciaDespesa
+          : null,
       });
 
       mostrarMensagem("Despesa atualizada com sucesso!", "success");
@@ -82,6 +109,18 @@ function useDespesas() {
         : new Date(a.data) - new Date(b.data),
     );
 
+  const totalPaginasDespesas = Math.ceil(
+    despesasFiltradas.length / itensPorPaginaDespesas,
+  );
+
+  const inicioDespesas = (paginaDespesas - 1) * itensPorPaginaDespesas;
+  const fimDespesas = inicioDespesas + itensPorPaginaDespesas;
+
+  const despesasPaginadas = despesasFiltradas.slice(
+    inicioDespesas,
+    fimDespesas,
+  );
+
   async function cadastrarDespesa(e, atualizarDados, mostrarMensagem) {
     e.preventDefault();
 
@@ -108,6 +147,13 @@ function useDespesas() {
         valor: Number(valorDespesa),
         categoria: categoriaDespesa,
         data: dataDespesa,
+        recorrente: recorrenteDespesa,
+        frequenciaRecorrencia: recorrenteDespesa
+          ? frequenciaRecorrenciaDespesa
+          : null,
+        proximaRecorrencia: recorrenteDespesa
+          ? proximaRecorrenciaDespesa
+          : null,
       });
 
       mostrarMensagem("Despesa cadastrada com sucesso!", "success");
@@ -137,14 +183,24 @@ function useDespesas() {
     carregandoDespesa,
     setCarregandoDespesa,
     filtroDespesa,
-    setFiltroDespesa,
+    setFiltroDespesa: alterarFiltroDespesa,
     ordemDespesas,
-    setOrdemDespesas,
+    setOrdemDespesas: alterarOrdemDespesas,
     despesasFiltradas,
     limparFormularioDespesa,
     editarDespesa,
     excluirDespesa,
     cadastrarDespesa,
+    paginaDespesas,
+    setPaginaDespesas,
+    totalPaginasDespesas,
+    despesasPaginadas,
+    recorrenteDespesa,
+    setRecorrenteDespesa,
+    frequenciaRecorrenciaDespesa,
+    setFrequenciaRecorrenciaDespesa,
+    proximaRecorrenciaDespesa,
+    setProximaRecorrenciaDespesa,
   };
 }
 

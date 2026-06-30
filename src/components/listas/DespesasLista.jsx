@@ -1,121 +1,178 @@
+import EmptyState from "../EmptyState";
+import PainelFiltros from "../PainelFiltros";
+import Paginacao from "../Paginacao";
+import ResumoLista from "../ResumoLista";
+import TituloSecao from "../TituloSecao";
+
 function DespesasLista({
-    filtroDespesa,
-    setFiltroDespesa,
-    despesas,
-    despesasFiltradas,
-    ordemDespesas,
-    setOrdemDespesas,
-    formatarMoeda,
-    formatarData,
-    setDescricaoDespesa,
-    setValorDespesa,
-    setCategoriaDespesa,
-    setDataDespesa,
-    setEditandoDespesaId,
-    excluirDespesa,
+  filtroDespesa,
+  setFiltroDespesa,
+  despesas,
+  despesasFiltradas,
+  despesasPaginadas,
+  paginaDespesas,
+  setPaginaDespesas,
+  totalPaginasDespesas,
+  ordemDespesas,
+  setOrdemDespesas,
+  formatarMoeda,
+  formatarData,
+  setDescricaoDespesa,
+  setValorDespesa,
+  setCategoriaDespesa,
+  setDataDespesa,
+  setEditandoDespesaId,
+  setRecorrenteDespesa,
+  setFrequenciaRecorrenciaDespesa,
+  setProximaRecorrenciaDespesa,
+  excluirDespesa,
 }) {
+  const totalDespesas = despesasFiltradas.reduce(
+    (total, despesa) => total + Number(despesa.valor),
+    0,
+  );
+
+  const maiorDespesa = despesasFiltradas.reduce(
+    (maior, despesa) => Math.max(maior, Number(despesa.valor)),
+    0,
+  );
+
   return (
     <>
-        <h3 className="mb-4">Minhas Despesas</h3>
+      <TituloSecao
+        tipo="despesa"
+        icone="🛒"
+        titulo="Minhas Despesas"
+        subtitulo="Acompanhe seus gastos e mantenha o controle financeiro."
+      />
 
-        <input
-            type="text"
-            className="form-control mb-3"
-            placeholder="Buscar despesa..."
-            value={filtroDespesa}
-            onChange={(e) => setFiltroDespesa(e.target.value)}
+      <PainelFiltros
+        titulo="Filtro de Despesas"
+        placeholder="Buscar despesa..."
+        filtro={filtroDespesa}
+        setFiltro={setFiltroDespesa}
+        ordem={ordemDespesas}
+        setOrdem={setOrdemDespesas}
+        total={despesasFiltradas.length}
+        tipo="Despesas"
+      />
+
+      <ResumoLista
+        tipo="despesa"
+        totalItens={despesasFiltradas.length}
+        valorTotal={formatarMoeda(totalDespesas)}
+        maiorValor={formatarMoeda(maiorDespesa)}
+        cor="text-danger"
+      />
+
+      {Array.isArray(despesas) && despesas.length === 0 && (
+        <EmptyState
+          icone="🛒"
+          titulo="Nenhuma despesa cadastrada"
+          descricao="Cadastre sua primeira despesa para acompanhar melhor seus gastos."
+          acaoTexto="Cadastrar despesa"
+          aoClicar={() =>
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth",
+            })
+          }
         />
+      )}
 
-        {filtroDespesa && (
-            <button
-            type="button"
-            className="btn btn-outline-secondary w-100 mb-3"
-            onClick={() => setFiltroDespesa("")}
-            >
-            Limpar busca
-            </button>
+      {Array.isArray(despesas) &&
+        despesas.length > 0 &&
+        despesasFiltradas.length === 0 && (
+          <EmptyState
+            icone="🔎"
+            titulo="Nenhuma despesa encontrada"
+            descricao="Não encontramos despesas com esse termo. Tente limpar a busca ou usar outra palavra."
+            acaoTexto="Limpar busca"
+            aoClicar={() => setFiltroDespesa("")}
+          />
         )}
 
-        <p className="text-muted">
-            {despesasFiltradas.length} despesa(s) encontrada(s)
-        </p>
+      {Array.isArray(despesasPaginadas) &&
+        despesasPaginadas.map((despesa) => (
+          <div
+            key={despesa.id}
+            className="movimento-card movimento-despesa fade-up"
+          >
+            <div className="movimento-topo">
+              <div className="movimento-icone">🛒</div>
 
-        <select
-            className="form-control mb-3"
-            value={ordemDespesas}
-            onChange={(e) => setOrdemDespesas(e.target.value)}
-        >
-            <option value="desc">
-            Mais recentes primeiro
-            </option>
-
-            <option value="asc">
-            Mais antigas primeiro
-            </option>
-        </select>
-
-        {Array.isArray(despesas) && despesas.length === 0 && (
-            <p className="text-muted">
-            Nenhuma despesa cadastrada.
-            </p>
-        )}
-
-        {Array.isArray(despesas) &&
-            despesas.length > 0 &&
-            despesasFiltradas.length === 0 && (
-            <p className="text-muted">
-                Nenhuma despesa encontrada com esse filtro.
-            </p>
-            )}
-
-        {Array.isArray(despesas) &&
-            despesasFiltradas.map((despesa) => (
-            <div key={despesa.id} className="receita-item">
+              <div>
                 <h5>{despesa.descricao}</h5>
+                <span className="movimento-data">
+                  {formatarData(despesa.data)}
+                </span>
+              </div>
+            </div>
 
-                <p>
-                <strong>Valor:</strong>{" "}
+            <div className="movimento-info">
+              <strong className="movimento-valor">
                 {formatarMoeda(despesa.valor)}
-                </p>
+              </strong>
 
-                <p>
-                <strong>Categoria:</strong>{" "}
-                {despesa.categoria}
-                </p>
+              <div className="movimento-badges">
+                <span className="movimento-badge">{despesa.categoria}</span>
 
-                <p>
-                <strong>Data:</strong>{" "}
-                {formatarData(despesa.data)}
-                </p>
+                {despesa.recorrente && (
+                  <span className="movimento-badge-recorrente">
+                    🔁 {despesa.frequenciaRecorrencia}
+                  </span>
+                )}
+              </div>
+            </div>
 
-                <button
-                className="btn btn-primary me-2"
+            <div className="movimento-acoes">
+              <button
+                className="movimento-btn movimento-btn-editar"
                 onClick={() => {
-                    setDescricaoDespesa(despesa.descricao);
-                    setValorDespesa(despesa.valor);
-                    setCategoriaDespesa(despesa.categoria);
-                    setDataDespesa(despesa.data.split("T")[0]);
-                    setEditandoDespesaId(despesa.id);
+                  setDescricaoDespesa(despesa.descricao);
+                  setValorDespesa(despesa.valor);
+                  setCategoriaDespesa(despesa.categoria);
+                  setDataDespesa(despesa.data.split("T")[0]);
 
-                    window.scrollTo({
+                  setRecorrenteDespesa(despesa.recorrente);
+
+                  setFrequenciaRecorrenciaDespesa(
+                    despesa.frequenciaRecorrencia || "",
+                  );
+
+                  setProximaRecorrenciaDespesa(
+                    despesa.proximaRecorrencia
+                      ? despesa.proximaRecorrencia.split("T")[0]
+                      : "",
+                  );
+
+                  setEditandoDespesaId(despesa.id);
+
+                  window.scrollTo({
                     top: 0,
                     behavior: "smooth",
-                    });
+                  });
                 }}
-                >
-                Editar
-                </button>
+              >
+                ✏️ Editar
+              </button>
 
-                <button
-                className="btn btn-danger"
+              <button
+                className="movimento-btn movimento-btn-excluir"
                 onClick={() => excluirDespesa(despesa.id)}
-                >
-                Excluir
-                </button>
+              >
+                🗑 Excluir
+              </button>
             </div>
-            ))}
-        </>
-    );
+          </div>
+        ))}
+      <Paginacao
+        paginaAtual={paginaDespesas}
+        totalPaginas={totalPaginasDespesas}
+        aoMudarPagina={setPaginaDespesas}
+      />
+    </>
+  );
 }
 
 export default DespesasLista;
