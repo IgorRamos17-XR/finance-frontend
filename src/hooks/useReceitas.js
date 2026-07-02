@@ -1,5 +1,6 @@
 import { useState } from "react";
 import receitasService from "../services/receitasService";
+import tratarErroApi from "../utils/tratarErroApi";
 
 function useReceitas() {
   const [receitas, setReceitas] = useState([]);
@@ -91,9 +92,14 @@ function useReceitas() {
 
       limparFormularioReceita();
       await atualizarDados();
-    } catch {
-      mostrarMensagem("Erro ao cadastrar receita", "danger");
-    } finally {
+    } 
+    catch (error) {
+      mostrarMensagem(
+        tratarErroApi(error, "Erro ao cadastrar receita."),
+        "danger",
+      );
+    } 
+    finally {
       setCarregandoReceita(false);
     }
   }
@@ -126,9 +132,14 @@ function useReceitas() {
 
       limparFormularioReceita();
       await atualizarDados();
-    } catch {
-      mostrarMensagem("Erro ao atualizar receita", "danger");
-    } finally {
+    } 
+    catch (error) {
+      mostrarMensagem(
+        tratarErroApi(error, "Erro ao atualizar receita."),
+        "danger",
+      );
+    } 
+    finally {
       setCarregandoReceita(false);
     }
   }
@@ -140,9 +151,13 @@ function useReceitas() {
       mostrarMensagem("Receita excluída com sucesso!", "success");
 
       await atualizarDados();
-    } catch {
-      mostrarMensagem("Erro ao excluir receita", "danger");
-    }
+    } 
+    catch (error) {
+  mostrarMensagem(
+    tratarErroApi(error, "Erro ao excluir receita."),
+    "danger",
+  );
+}
   }
 
   return {
@@ -174,11 +189,11 @@ function useReceitas() {
     totalPaginasReceitas,
     receitasPaginadas,
     recorrente,
-setRecorrente,
-frequenciaRecorrencia,
-setFrequenciaRecorrencia,
-proximaRecorrencia,
-setProximaRecorrencia,
+    setRecorrente,
+    frequenciaRecorrencia,
+    setFrequenciaRecorrencia,
+    proximaRecorrencia,
+    setProximaRecorrencia,
   };
 }
 

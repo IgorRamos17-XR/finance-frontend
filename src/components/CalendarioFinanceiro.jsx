@@ -1,25 +1,32 @@
-function CalendarioFinanceiro({
-  receitas,
-  despesas,
-  metas,
-  formatarMoeda,
-}) {
+import { useState } from "react";
+
+function CalendarioFinanceiro({ receitas, despesas, metas, formatarMoeda }) {
   const hoje = new Date();
-  const anoAtual = hoje.getFullYear();
-  const mesAtual = hoje.getMonth();
+  const [dataCalendario, setDataCalendario] = useState(
+    new Date(hoje.getFullYear(), hoje.getMonth(), 1),
+  );
+
+  const anoAtual = dataCalendario.getFullYear();
+  const mesAtual = dataCalendario.getMonth();
 
   const diasNoMes = new Date(anoAtual, mesAtual + 1, 0).getDate();
 
   const dias = Array.from({ length: diasNoMes }, (_, index) => index + 1);
 
-  function mesmoDia(data, dia) {
-    const dataConvertida = new Date(data);
+ const nomeMes = dataCalendario.toLocaleDateString("pt-BR", {
+  month: "long",
+  year: "numeric",
+});
 
-    return (
-      dataConvertida.getFullYear() === anoAtual &&
-      dataConvertida.getMonth() === mesAtual &&
-      dataConvertida.getDate() === dia
-    );
+  const diasSemana = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
+
+  function mesmoDia(data, dia) {
+    if (!data) return false;
+
+    const dataTexto = data.split("T")[0];
+    const [ano, mes, diaData] = dataTexto.split("-").map(Number);
+
+    return ano === anoAtual && mes - 1 === mesAtual && diaData === dia;
   }
 
   function eventosDoDia(dia) {
@@ -56,6 +63,14 @@ function CalendarioFinanceiro({
     return [...receitasDia, ...despesasDia, ...metasDia];
   }
 
+  function mesAnterior() {
+    setDataCalendario(new Date(anoAtual, mesAtual - 1, 1));
+  }
+
+  function proximoMes() {
+    setDataCalendario(new Date(anoAtual, mesAtual + 1, 1));
+  }
+
   return (
     <section className="calendario-card fade-up">
       <div className="calendario-header">
@@ -65,6 +80,32 @@ function CalendarioFinanceiro({
           <h3>Calendário Financeiro</h3>
           <p>Visualize receitas, despesas e metas do mês atual.</p>
         </div>
+      </div>
+
+      <div className="calendario-mes d-flex justify-content-between align-items-center">
+        <button
+          type="button"
+          className="btn btn-sm btn-outline-primary"
+          onClick={mesAnterior}
+        >
+          ← Mês anterior
+        </button>
+
+        <h4>{nomeMes}</h4>
+
+        <button
+          type="button"
+          className="btn btn-sm btn-outline-primary"
+          onClick={proximoMes}
+        >
+          Próximo mês →
+        </button>
+      </div>
+
+      <div className="calendario-semana">
+        {diasSemana.map((dia) => (
+          <span key={dia}>{dia}</span>
+        ))}
       </div>
 
       <div className="calendario-grid">

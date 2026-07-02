@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 import receitasService from "../services/receitasService";
 import despesasService from "../services/despesasService";
 import dashboardService from "../services/dashboardService";
 import metasService from "../services/metasService";
+import tratarErroApi from "../utils/tratarErroApi";
 
 function useDadosFinanceiros({
   setReceitas,
@@ -16,7 +17,7 @@ function useDadosFinanceiros({
 }) {
   const [carregandoDados, setCarregandoDados] = useState(false);
 
-  async function atualizarDados() {
+  const atualizarDados = useCallback(async () => {
     setCarregandoDados(true);
 
     try {
@@ -48,20 +49,31 @@ function useDadosFinanceiros({
 
       setReceitas(listaReceitas);
       setDespesas(listaDespesas);
-      setDashboard(dashboardResponse);
       setMetas(listaMetas);
+      setDashboard(dashboardResponse);
       setDespesasPorCategoria(categoriasResponse || []);
     } catch (error) {
       if (error.response?.status === 401) {
         limparSessao();
         mostrarMensagem("Sessão expirada", "danger");
       } else {
-        mostrarMensagem("Erro ao carregar dados.", "danger");
+        mostrarMensagem(
+          tratarErroApi(error, "Erro ao carregar dados."),
+          "danger",
+        );
       }
     } finally {
       setCarregandoDados(false);
     }
-  }
+  }, [
+    setReceitas,
+    setDespesas,
+    setMetas,
+    setDashboard,
+    setDespesasPorCategoria,
+    limparSessao,
+    mostrarMensagem,
+  ]);
 
   return {
     carregandoDados,

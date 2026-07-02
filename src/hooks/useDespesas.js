@@ -1,5 +1,6 @@
 import { useState } from "react";
 import despesasService from "../services/despesasService";
+import tratarErroApi from "../utils/tratarErroApi";
 
 function useDespesas() {
   const [despesas, setDespesas] = useState([]);
@@ -80,9 +81,14 @@ function useDespesas() {
 
       limparFormularioDespesa();
       await atualizarDados();
-    } catch {
-      mostrarMensagem("Erro ao atualizar despesa", "danger");
-    } finally {
+    } 
+    catch (error) {
+      mostrarMensagem(
+        tratarErroApi(error, "Erro ao atualizar despesa."),
+        "danger",
+      );
+    } 
+    finally {
       setCarregandoDespesa(false);
     }
   }
@@ -94,9 +100,13 @@ function useDespesas() {
       mostrarMensagem("Despesa excluída com sucesso!", "success");
 
       await atualizarDados();
-    } catch {
-      mostrarMensagem("Erro ao excluir despesa", "danger");
-    }
+    } 
+   catch (error) {
+  mostrarMensagem(
+    tratarErroApi(error, "Erro ao excluir despesa."),
+    "danger",
+  );
+}
   }
 
   const despesasFiltradas = despesas
@@ -160,9 +170,14 @@ function useDespesas() {
 
       limparFormularioDespesa();
       await atualizarDados();
-    } catch {
-      mostrarMensagem("Erro ao cadastrar despesa", "danger");
-    } finally {
+    } 
+    catch (error) {
+  mostrarMensagem(
+    tratarErroApi(error, "Erro ao cadastrar despesa."),
+    "danger",
+  );
+}
+    finally {
       setCarregandoDespesa(false);
     }
   }

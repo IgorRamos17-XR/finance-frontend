@@ -1,5 +1,6 @@
 import { useState } from "react";
 import metasService from "../services/metasService";
+import tratarErroApi from "../utils/tratarErroApi";
 
 function useMetas() {
   const [metas, setMetas] = useState([]);
@@ -44,9 +45,14 @@ function useMetas() {
       mostrarMensagem("Meta cadastrada com sucesso!", "success");
       limparFormularioMeta();
       await atualizarMetas();
-    } catch {
-      mostrarMensagem("Erro ao cadastrar meta.", "danger");
-    } finally {
+    } 
+    catch (error) {
+      mostrarMensagem(
+        tratarErroApi(error, "Erro ao cadastrar meta."),
+        "danger",
+      );
+    } 
+    finally {
       setCarregandoMeta(false);
     }
   }
@@ -76,9 +82,14 @@ function useMetas() {
       mostrarMensagem("Meta atualizada com sucesso!", "success");
       limparFormularioMeta();
       await atualizarMetas();
-    } catch {
-      mostrarMensagem("Erro ao atualizar meta.", "danger");
-    } finally {
+    } 
+    catch (error) {
+  mostrarMensagem(
+    tratarErroApi(error, "Erro ao atualizar meta."),
+    "danger",
+  );
+}
+     finally {
       setCarregandoMeta(false);
     }
   }
@@ -88,8 +99,12 @@ function useMetas() {
       await metasService.excluir(id);
       mostrarMensagem("Meta excluída com sucesso!", "success");
       await atualizarMetas();
-    } catch {
-      mostrarMensagem("Erro ao excluir meta.", "danger");
+    } 
+    catch (error) {
+      mostrarMensagem(
+        tratarErroApi(error, "Erro ao excluir meta."),
+        "danger",
+      );
     }
   }
 

@@ -1,14 +1,8 @@
 import { useEffect } from "react";
-
 import useDadosFinanceiros from "./hooks/useDadosFinanceiros";
-
 import "./App.css";
-import ReceitaForm from "./components/forms/ReceitaForm";
-import DespesaForm from "./components/forms/DespesaForm";
-import MetaForm from "./components/forms/MetaForm";
-import ReceitasLista from "./components/listas/ReceitasLista";
-import DespesasLista from "./components/listas/DespesasLista";
-import MetasLista from "./components/listas/MetasLista";
+import "./styles/dashboard.css";
+
 import { formatarMoeda, formatarData } from "./utils/formatadores";
 import useAuthContext from "./hooks/useAuthContext";
 import useReceitas from "./hooks/useReceitas";
@@ -18,21 +12,20 @@ import useDashboard from "./hooks/useDashboard";
 import useGraficos from "./hooks/useGraficos";
 import BotaoSair from "./components/BotaoSair";
 import Layout from "./components/Layout";
-import CalendarioFinanceiro from "./components/CalendarioFinanceiro";
-
 import DashboardPage from "./pages/DashboardPage";
-import FormulariosFinanceiros from "./components/FormulariosFinanceiros";
-import ListasFinanceiras from "./components/ListasFinanceiras";
 import FinancePage from "./pages/FinancePage";
 import PainelFinanceiro from "./components/PainelFinanceiro";
-import ResumoMetas from "./components/ResumoMetas";
-import InsightsFinanceiros from "./components/InsightsFinanceiros";
-import EstatisticasFinanceiras from "./components/EstatisticasFinanceiras";
-import SaudeFinanceira from "./components/SaudeFinanceira";
 import GerenciadorFinanceiro from "./components/GerenciadorFinanceiro";
 import useMensagem from "./hooks/useMensagem";
 import useConfirm from "./hooks/useConfirm";
-import PainelRecorrencias from "./components/PainelRecorrencias";
+
+import useFormularioProps from "./hooks/useFormularioProps";
+import useListaProps from "./hooks/useListaProps";
+
+import PainelAnalitico from "./components/PainelAnalitico";
+import PainelFormularios from "./components/PainelFormularios";
+import PainelListas from "./components/PainelListas";
+
 
 function App() {
   const { sair, limparSessao } = useAuthContext();
@@ -153,6 +146,127 @@ function App() {
     mostrarMensagem,
   });
 
+  const { receitaProps, despesaProps, metaProps } = useFormularioProps({
+    receita: {
+      editandoId,
+      descricao,
+      setDescricao,
+      valor,
+      setValor,
+      categoria,
+      setCategoria,
+      data,
+      setData,
+      recorrente,
+      setRecorrente,
+      frequenciaRecorrencia,
+      setFrequenciaRecorrencia,
+      proximaRecorrencia,
+      setProximaRecorrencia,
+      cadastrarReceita,
+      editarReceita,
+      limparFormularioReceita,
+      carregandoReceita,
+    },
+    despesa: {
+      editandoDespesaId,
+      descricaoDespesa,
+      setDescricaoDespesa,
+      valorDespesa,
+      setValorDespesa,
+      categoriaDespesa,
+      setCategoriaDespesa,
+      dataDespesa,
+      setDataDespesa,
+      recorrenteDespesa,
+      setRecorrenteDespesa,
+      frequenciaRecorrenciaDespesa,
+      setFrequenciaRecorrenciaDespesa,
+      proximaRecorrenciaDespesa,
+      setProximaRecorrenciaDespesa,
+      cadastrarDespesa,
+      editarDespesa,
+      limparFormularioDespesa,
+      carregandoDespesa,
+    },
+    meta: {
+      editandoMetaId,
+      descricaoMeta,
+      setDescricaoMeta,
+      valorObjetivo,
+      setValorObjetivo,
+      valorAtual,
+      setValorAtual,
+      dataLimite,
+      setDataLimite,
+      cadastrarMeta,
+      editarMeta,
+      limparFormularioMeta,
+      carregandoMeta,
+    },
+    atualizarDados,
+    mostrarMensagem,
+  });
+
+  const { receitasProps, despesasProps, metasProps } = useListaProps({
+    receita: {
+      filtroReceita,
+      setFiltroReceita,
+      receitas,
+      receitasFiltradas,
+      receitasPaginadas,
+      paginaReceitas,
+      setPaginaReceitas,
+      totalPaginasReceitas,
+      ordemReceitas,
+      setOrdemReceitas,
+      setDescricao,
+      setValor,
+      setCategoria,
+      setData,
+      setEditandoId,
+      setRecorrente,
+      setFrequenciaRecorrencia,
+      setProximaRecorrencia,
+      excluirReceita,
+    },
+    despesa: {
+      filtroDespesa,
+      setFiltroDespesa,
+      despesas,
+      despesasFiltradas,
+      despesasPaginadas,
+      paginaDespesas,
+      setPaginaDespesas,
+      totalPaginasDespesas,
+      ordemDespesas,
+      setOrdemDespesas,
+      setDescricaoDespesa,
+      setValorDespesa,
+      setCategoriaDespesa,
+      setDataDespesa,
+      setEditandoDespesaId,
+      setRecorrenteDespesa,
+      setFrequenciaRecorrenciaDespesa,
+      setProximaRecorrenciaDespesa,
+      excluirDespesa,
+    },
+    meta: {
+      metas,
+      setDescricaoMeta,
+      setValorObjetivo,
+      setValorAtual,
+      setDataLimite,
+      setEditandoMetaId,
+      excluirMeta,
+    },
+    atualizarDados,
+    mostrarMensagem,
+    confirmar,
+    formatarMoeda,
+    formatarData,
+  });
+
   const {
     dadosGraficoCategorias,
     dadosGraficoResumo,
@@ -202,209 +316,28 @@ function App() {
             opcoesGraficoCategorias={opcoesGraficoCategorias}
           />
 
-          <PainelRecorrencias
-            receitas={receitas}
-            despesas={despesas}
-            formatarMoeda={formatarMoeda}
-            formatarData={formatarData}
-          />
-
-          <CalendarioFinanceiro
+          <PainelAnalitico
+            dashboard={dashboard}
             receitas={receitas}
             despesas={despesas}
             metas={metas}
             formatarMoeda={formatarMoeda}
+            formatarData={formatarData}
           />
-
-          <ResumoMetas metas={metas} formatarMoeda={formatarMoeda} />
-
-          <InsightsFinanceiros dashboard={dashboard} metas={metas} />
-
-          <EstatisticasFinanceiras
-            receitas={receitas}
-            despesas={despesas}
-            dashboard={dashboard}
-            formatarMoeda={formatarMoeda}
-          />
-
-          <SaudeFinanceira dashboard={dashboard} metas={metas} />
-
           <GerenciadorFinanceiro
             formularios={
-              <FormulariosFinanceiros
-                receitaForm={
-                  <ReceitaForm
-                    editandoId={editandoId}
-                    descricao={descricao}
-                    setDescricao={setDescricao}
-                    valor={valor}
-                    setValor={setValor}
-                    categoria={categoria}
-                    setCategoria={setCategoria}
-                    data={data}
-                    setData={setData}
-                    recorrente={recorrente}
-                    setRecorrente={setRecorrente}
-                    frequenciaRecorrencia={frequenciaRecorrencia}
-                    setFrequenciaRecorrencia={setFrequenciaRecorrencia}
-                    proximaRecorrencia={proximaRecorrencia}
-                    setProximaRecorrencia={setProximaRecorrencia}
-                    cadastrarReceita={(e) =>
-                      cadastrarReceita(e, atualizarDados, mostrarMensagem)
-                    }
-                    editarReceita={(id) =>
-                      editarReceita(id, atualizarDados, mostrarMensagem)
-                    }
-                    limparFormularioReceita={limparFormularioReceita}
-                    carregandoReceita={carregandoReceita}
-                  />
-                }
-                despesaForm={
-                  <DespesaForm
-                    editandoDespesaId={editandoDespesaId}
-                    descricaoDespesa={descricaoDespesa}
-                    setDescricaoDespesa={setDescricaoDespesa}
-                    valorDespesa={valorDespesa}
-                    setValorDespesa={setValorDespesa}
-                    categoriaDespesa={categoriaDespesa}
-                    setCategoriaDespesa={setCategoriaDespesa}
-                    dataDespesa={dataDespesa}
-                    setDataDespesa={setDataDespesa}
-                    recorrenteDespesa={recorrenteDespesa}
-                    setRecorrenteDespesa={setRecorrenteDespesa}
-                    frequenciaRecorrenciaDespesa={frequenciaRecorrenciaDespesa}
-                    setFrequenciaRecorrenciaDespesa={
-                      setFrequenciaRecorrenciaDespesa
-                    }
-                    proximaRecorrenciaDespesa={proximaRecorrenciaDespesa}
-                    setProximaRecorrenciaDespesa={setProximaRecorrenciaDespesa}
-                    cadastrarDespesa={(e) =>
-                      cadastrarDespesa(e, atualizarDados, mostrarMensagem)
-                    }
-                    editarDespesa={(id) =>
-                      editarDespesa(id, atualizarDados, mostrarMensagem)
-                    }
-                    limparFormularioDespesa={limparFormularioDespesa}
-                    carregandoDespesa={carregandoDespesa}
-                  />
-                }
-                metaForm={
-                  <MetaForm
-                    editandoMetaId={editandoMetaId}
-                    descricaoMeta={descricaoMeta}
-                    setDescricaoMeta={setDescricaoMeta}
-                    valorObjetivo={valorObjetivo}
-                    setValorObjetivo={setValorObjetivo}
-                    valorAtual={valorAtual}
-                    setValorAtual={setValorAtual}
-                    dataLimite={dataLimite}
-                    setDataLimite={setDataLimite}
-                    cadastrarMeta={(e) =>
-                      cadastrarMeta(e, atualizarDados, mostrarMensagem)
-                    }
-                    editarMeta={(id) =>
-                      editarMeta(id, atualizarDados, mostrarMensagem)
-                    }
-                    limparFormularioMeta={limparFormularioMeta}
-                    carregandoMeta={carregandoMeta}
-                  />
-                }
+              <PainelFormularios
+                receitaProps={receitaProps}
+                despesaProps={despesaProps}
+                metaProps={metaProps}
               />
             }
             listas={
-              <ListasFinanceiras
+              <PainelListas
                 carregando={carregandoDados}
-                receitasLista={
-                  <ReceitasLista
-                    filtroReceita={filtroReceita}
-                    setFiltroReceita={setFiltroReceita}
-                    receitas={receitas}
-                    receitasFiltradas={receitasFiltradas}
-                    receitasPaginadas={receitasPaginadas}
-                    paginaReceitas={paginaReceitas}
-                    setPaginaReceitas={setPaginaReceitas}
-                    totalPaginasReceitas={totalPaginasReceitas}
-                    ordemReceitas={ordemReceitas}
-                    setOrdemReceitas={setOrdemReceitas}
-                    formatarMoeda={formatarMoeda}
-                    formatarData={formatarData}
-                    setDescricao={setDescricao}
-                    setValor={setValor}
-                    setCategoria={setCategoria}
-                    setData={setData}
-                    setEditandoId={setEditandoId}
-                    setRecorrente={setRecorrente}
-                    setFrequenciaRecorrencia={setFrequenciaRecorrencia}
-                    setProximaRecorrencia={setProximaRecorrencia}
-                    excluirReceita={(id) =>
-                      confirmar({
-                        titulo: "Excluir receita",
-                        mensagem:
-                          "Tem certeza que deseja excluir esta receita?",
-                        textoConfirmar: "Excluir",
-                        aoConfirmar: () =>
-                          excluirReceita(id, atualizarDados, mostrarMensagem),
-                      })
-                    }
-                  />
-                }
-                despesasLista={
-                  <DespesasLista
-                    filtroDespesa={filtroDespesa}
-                    setFiltroDespesa={setFiltroDespesa}
-                    despesas={despesas}
-                    despesasFiltradas={despesasFiltradas}
-                    despesasPaginadas={despesasPaginadas}
-                    paginaDespesas={paginaDespesas}
-                    setPaginaDespesas={setPaginaDespesas}
-                    totalPaginasDespesas={totalPaginasDespesas}
-                    ordemDespesas={ordemDespesas}
-                    setOrdemDespesas={setOrdemDespesas}
-                    formatarMoeda={formatarMoeda}
-                    formatarData={formatarData}
-                    setDescricaoDespesa={setDescricaoDespesa}
-                    setValorDespesa={setValorDespesa}
-                    setCategoriaDespesa={setCategoriaDespesa}
-                    setDataDespesa={setDataDespesa}
-                    setEditandoDespesaId={setEditandoDespesaId}
-                    setRecorrenteDespesa={setRecorrenteDespesa}
-                    setFrequenciaRecorrenciaDespesa={
-                      setFrequenciaRecorrenciaDespesa
-                    }
-                    setProximaRecorrenciaDespesa={setProximaRecorrenciaDespesa}
-                    excluirDespesa={(id) =>
-                      confirmar({
-                        titulo: "Excluir despesa",
-                        mensagem:
-                          "Tem certeza que deseja excluir esta despesa?",
-                        textoConfirmar: "Excluir",
-                        aoConfirmar: () =>
-                          excluirDespesa(id, atualizarDados, mostrarMensagem),
-                      })
-                    }
-                  />
-                }
-                metasLista={
-                  <MetasLista
-                    metas={metas}
-                    formatarMoeda={formatarMoeda}
-                    formatarData={formatarData}
-                    setDescricaoMeta={setDescricaoMeta}
-                    setValorObjetivo={setValorObjetivo}
-                    setValorAtual={setValorAtual}
-                    setDataLimite={setDataLimite}
-                    setEditandoMetaId={setEditandoMetaId}
-                    excluirMeta={(id) =>
-                      confirmar({
-                        titulo: "Excluir meta",
-                        mensagem: "Tem certeza que deseja excluir esta meta?",
-                        textoConfirmar: "Excluir",
-                        aoConfirmar: () =>
-                          excluirMeta(id, atualizarDados, mostrarMensagem),
-                      })
-                    }
-                  />
-                }
+                receitasProps={receitasProps}
+                despesasProps={despesasProps}
+                metasProps={metasProps}
               />
             }
           />
