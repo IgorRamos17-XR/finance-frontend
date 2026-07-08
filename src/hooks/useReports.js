@@ -1,6 +1,7 @@
 import { useCallback, useState } from "react";
 import dashboardService from "../services/dashboardService";
 import { formatarMoeda } from "../utils/formatadores";
+import tratarErroApi from "../utils/tratarErroApi";
 
 function useReports(mostrarMensagem) {
   const [dashboard, setDashboard] = useState({
@@ -22,8 +23,11 @@ function useReports(mostrarMensagem) {
       const categoriasResponse = await dashboardService.despesasPorCategoria();
 
       setCategorias(categoriasResponse || []);
-    } catch {
-      mostrarMensagem("Erro ao carregar relatório", "danger");
+    } catch (error) {
+      mostrarMensagem(
+        tratarErroApi(error, "Erro ao carregar relatório."),
+        "danger",
+      );
     } finally {
       setCarregando(false);
     }
@@ -103,8 +107,11 @@ function useReports(mostrarMensagem) {
       setCategorias(categoriasResponse || []);
 
       mostrarMensagem("Relatório filtrado com sucesso!", "success");
-    } catch {
-      mostrarMensagem("Erro ao filtrar relatório", "danger");
+    } catch (error) {
+      mostrarMensagem(
+        tratarErroApi(error, "Erro ao filtrar relatório."),
+        "danger",
+      );
     } finally {
       setCarregando(false);
     }

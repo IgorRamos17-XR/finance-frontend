@@ -1,20 +1,24 @@
 import api from "./api";
 
 const metasService = {
-  listar() {
-    return api.get("/MetasFinanceiras");
+  async listar() {
+    const response = await api.get("/MetasFinanceiras");
+    return response.data;
   },
 
-  cadastrar(meta) {
-    return api.post("/MetasFinanceiras", meta);
+  async cadastrar(meta) {
+    const response = await api.post("/MetasFinanceiras", meta);
+    return response.data;
   },
 
-  editar(id, meta) {
-    return api.put(`/MetasFinanceiras/${id}`, meta);
+  async editar(id, meta) {
+    const response = await api.put(`/MetasFinanceiras/${id}`, meta);
+    return response.data;
   },
 
-  excluir(id) {
-    return api.delete(`/MetasFinanceiras/${id}`);
+  async excluir(id) {
+    const response = await api.delete(`/MetasFinanceiras/${id}`);
+    return response.data;
   },
 };
 

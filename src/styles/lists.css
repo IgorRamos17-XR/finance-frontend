@@ -1,0 +1,368 @@
+/* CARDS PREMIUM DE RECEITAS E DESPESAS */
+
+.movimento-card {
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+  padding: 22px;
+  margin-bottom: 20px;
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
+  transition: 0.25s ease;
+}
+
+.movimento-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 48px rgba(15, 23, 42, 0.14);
+}
+
+.movimento-receita {
+  border-left: 6px solid #16a34a;
+  background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+}
+
+.movimento-despesa {
+  border-left: 6px solid #dc2626;
+  background: linear-gradient(135deg, #ffffff 0%, #fef2f2 100%);
+}
+
+.movimento-topo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.movimento-icone {
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+}
+
+.movimento-receita .movimento-icone {
+  background: #dcfce7;
+}
+
+.movimento-despesa .movimento-icone {
+  background: #fee2e2;
+}
+
+.movimento-topo h5 {
+  color: #111827;
+  font-weight: 900;
+  margin: 0;
+}
+
+.movimento-data {
+  color: #64748b;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.movimento-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.movimento-valor {
+  font-size: 1.45rem;
+  font-weight: 950;
+}
+
+.movimento-receita .movimento-valor {
+  color: #16a34a;
+}
+
+.movimento-despesa .movimento-valor {
+  color: #dc2626;
+}
+
+.movimento-badge {
+  background: rgba(255, 255, 255, 0.75);
+  color: #334155;
+  padding: 8px 13px;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: 0.82rem;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+}
+
+.movimento-acoes {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.movimento-btn {
+  border: none;
+  padding: 10px 15px;
+  border-radius: 15px;
+  font-weight: 900;
+  transition: 0.2s ease;
+}
+
+.movimento-btn:hover {
+  transform: translateY(-1px);
+}
+
+.movimento-btn-editar {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.movimento-btn-excluir {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+body.bg-dark .movimento-card {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+body.bg-dark .movimento-receita,
+body.bg-dark .movimento-despesa {
+  background: #1f2937;
+}
+
+body.bg-dark .movimento-topo h5 {
+  color: #f9fafb;
+}
+
+body.bg-dark .movimento-data {
+  color: #d1d5db;
+}
+
+body.bg-dark .movimento-badge {
+  background: #111827;
+  color: #e5e7eb;
+}
+
+/* PAINEL DE FILTROS DAS LISTAS */
+
+.painel-filtros {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 22px;
+  padding: 20px;
+  margin-bottom: 22px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
+.painel-filtros-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+
+.painel-filtros-header h4 {
+  margin: 0;
+  color: #111827;
+  font-weight: 800;
+}
+
+.painel-filtros-header p {
+  margin: 4px 0 0;
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+.painel-filtros-badge {
+  background: #eff6ff;
+  color: #2563eb;
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.painel-filtros-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.painel-filtro-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.painel-filtro-campo label {
+  color: #374151;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.painel-filtro-campo input,
+.painel-filtro-campo select {
+  height: 44px;
+  border: 1px solid #d1d5db;
+  border-radius: 14px;
+  padding: 0 14px;
+  color: #111827;
+  background: #ffffff;
+  outline: none;
+  transition: 0.2s ease;
+}
+
+.painel-filtro-campo input:focus,
+.painel-filtro-campo select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+}
+
+.painel-filtros-limpar {
+  margin-top: 14px;
+  width: 100%;
+  border: none;
+  background: #f3f4f6;
+  color: #374151;
+  height: 42px;
+  border-radius: 14px;
+  font-weight: 800;
+  transition: 0.2s ease;
+}
+
+.painel-filtros-limpar:hover {
+  background: #e5e7eb;
+  transform: translateY(-1px);
+}
+
+body.bg-dark .painel-filtros {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+body.bg-dark .painel-filtros-header h4,
+body.bg-dark .painel-filtro-campo label {
+  color: #f9fafb;
+}
+
+body.bg-dark .painel-filtros-header p {
+  color: #d1d5db;
+}
+
+body.bg-dark .painel-filtro-campo input,
+body.bg-dark .painel-filtro-campo select {
+  background: #111827;
+  border-color: #4b5563;
+  color: #f9fafb;
+}
+
+body.bg-dark .painel-filtros-limpar {
+  background: #374151;
+  color: #f9fafb;
+}
+
+/* RESUMO DAS LISTAS */
+
+.resumo-lista-premium {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  padding: 24px;
+  margin-bottom: 24px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 16px 38px rgba(15, 23, 42, 0.1);
+}
+
+.resumo-receita-premium {
+  border-left: 6px solid #16a34a;
+  background: linear-gradient(135deg, #ffffff 0%, #ecfdf5 100%);
+}
+
+.resumo-despesa-premium {
+  border-left: 6px solid #dc2626;
+  background: linear-gradient(135deg, #ffffff 0%, #fef2f2 100%);
+}
+
+.resumo-lista-premium-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.resumo-lista-premium-icone {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.75);
+  font-size: 1.7rem;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+}
+
+.resumo-lista-premium-header h4 {
+  margin: 0;
+  color: #111827;
+  font-weight: 900;
+}
+
+.resumo-lista-premium-header p {
+  margin: 4px 0 0;
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+.resumo-lista-premium-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 20px;
+  padding: 18px 10px;
+}
+
+.resumo-lista-premium-item {
+  text-align: center;
+  padding: 8px 12px;
+}
+
+.resumo-lista-premium-item:not(:last-child) {
+  border-right: 1px solid rgba(148, 163, 184, 0.35);
+}
+
+.resumo-lista-premium-item svg {
+  margin-bottom: 10px;
+  color: #334155;
+}
+
+.resumo-lista-premium-item span {
+  display: block;
+  color: #64748b;
+  font-weight: 800;
+  font-size: 0.82rem;
+  margin-bottom: 6px;
+}
+
+.resumo-lista-premium-item strong {
+  display: block;
+  color: #111827;
+  font-weight: 900;
+  font-size: 1rem;
+}
+
+.movimento-badge-recorrente {
+  background: #eff6ff;
+  color: #2563eb;
+  padding: 8px 13px;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: 0.82rem;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+}

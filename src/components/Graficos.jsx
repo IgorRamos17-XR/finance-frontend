@@ -33,6 +33,7 @@ function Graficos({
   despesasPorCategoria,
   dadosGraficoCategorias,
   opcoesGraficoCategorias,
+  formatarMoeda,
 }) {
   return (
     <section className="graficos-section fade-up">
@@ -106,7 +107,7 @@ function Graficos({
 
                       <div>
                         <strong>{item.categoria}</strong>
-                        <p>{item.total}</p>
+                        <p>{formatarMoeda(item.total)}</p>
                       </div>
                     </div>
                   );

@@ -35,7 +35,7 @@ function useDespesas() {
 
   function limparFormularioDespesa() {
     setDescricaoDespesa("");
-    setValorDespesa(null);
+    setValorDespesa("");
     setCategoriaDespesa("");
     setDataDespesa("");
     setEditandoDespesaId(null);
@@ -81,14 +81,12 @@ function useDespesas() {
 
       limparFormularioDespesa();
       await atualizarDados();
-    } 
-    catch (error) {
+    } catch (error) {
       mostrarMensagem(
         tratarErroApi(error, "Erro ao atualizar despesa."),
         "danger",
       );
-    } 
-    finally {
+    } finally {
       setCarregandoDespesa(false);
     }
   }
@@ -100,13 +98,12 @@ function useDespesas() {
       mostrarMensagem("Despesa excluída com sucesso!", "success");
 
       await atualizarDados();
-    } 
-   catch (error) {
-  mostrarMensagem(
-    tratarErroApi(error, "Erro ao excluir despesa."),
-    "danger",
-  );
-}
+    } catch (error) {
+      mostrarMensagem(
+        tratarErroApi(error, "Erro ao excluir despesa."),
+        "danger",
+      );
+    }
   }
 
   const despesasFiltradas = despesas
@@ -170,14 +167,12 @@ function useDespesas() {
 
       limparFormularioDespesa();
       await atualizarDados();
-    } 
-    catch (error) {
-  mostrarMensagem(
-    tratarErroApi(error, "Erro ao cadastrar despesa."),
-    "danger",
-  );
-}
-    finally {
+    } catch (error) {
+      mostrarMensagem(
+        tratarErroApi(error, "Erro ao cadastrar despesa."),
+        "danger",
+      );
+    } finally {
       setCarregandoDespesa(false);
     }
   }

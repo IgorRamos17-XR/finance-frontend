@@ -1,9 +1,6 @@
 import Separador from "./Separador";
 
-function GerenciadorFinanceiro({
-  formularios,
-  listas,
-}) {
+function GerenciadorFinanceiro({ formularios, listas }) {
   return (
     <>
       <Separador />

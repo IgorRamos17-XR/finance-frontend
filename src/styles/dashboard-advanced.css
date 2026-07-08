@@ -1,0 +1,942 @@
+/* LISTA DE METAS  */
+
+.meta-card {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #ffffff 0%, #f5f3ff 100%);
+  border: 1px solid #e5e7eb;
+  border-left: 6px solid #7c3aed;
+  border-radius: 24px;
+  padding: 22px;
+  margin-bottom: 20px;
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
+  transition: 0.25s ease;
+}
+
+.meta-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 48px rgba(15, 23, 42, 0.14);
+}
+
+.meta-card-topo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.meta-icone {
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  background: #ede9fe;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+}
+
+.meta-card h5 {
+  margin: 0;
+  color: #111827;
+  font-weight: 900;
+}
+
+.meta-card-topo span {
+  color: #64748b;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.meta-valores {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.meta-valores strong {
+  color: #7c3aed;
+  font-size: 1.45rem;
+  font-weight: 950;
+}
+
+.meta-valores span {
+  color: #64748b;
+  font-weight: 600;
+}
+
+.meta-progresso {
+  height: 14px;
+  background: #ede9fe;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.meta-progresso-barra {
+  height: 100%;
+  background: linear-gradient(90deg, #7c3aed, #a855f7);
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+.meta-progresso-alta {
+  background: linear-gradient(90deg, #2563eb, #38bdf8);
+}
+
+.meta-progresso-concluida {
+  background: linear-gradient(90deg, #16a34a, #22c55e);
+}
+
+.meta-status {
+  margin: -6px 0 18px;
+  color: #64748b;
+  font-weight: 800;
+  font-size: 0.92rem;
+}
+
+.meta-status-concluida {
+  color: #16a34a;
+}
+
+.meta-percentual {
+  color: #64748b;
+  font-weight: 900;
+  margin-bottom: 18px;
+}
+
+
+/* RESUMO DE METAS */
+
+.resumo-metas-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-left: 6px solid #7c3aed;
+  border-radius: 24px;
+  padding: 24px;
+  margin: 28px 0;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
+.resumo-metas-header {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.resumo-metas-icon {
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  background: #ede9fe;
+  font-size: 1.6rem;
+}
+
+.resumo-metas-header h3 {
+  margin: 0;
+  color: #111827;
+  font-weight: 900;
+}
+
+.resumo-metas-header p {
+  margin: 4px 0 0;
+  color: #64748b;
+}
+
+.resumo-metas-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.resumo-metas-grid div {
+  background: #f8fafc;
+  border-radius: 18px;
+  padding: 16px;
+}
+
+.resumo-metas-grid span {
+  display: block;
+  color: #64748b;
+  font-weight: 800;
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+}
+
+.resumo-metas-grid strong {
+  color: #111827;
+  font-weight: 900;
+}
+
+.resumo-metas-progresso-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  color: #334155;
+  font-weight: 900;
+}
+
+.resumo-metas-progresso {
+  height: 16px;
+  background: #ede9fe;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.resumo-metas-progresso-barra {
+  height: 100%;
+  background: #7c3aed;
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+/* INSIGHTS FINANCEIROS */
+
+.insights-card {
+  background: linear-gradient(135deg, #ffffff 0%, #eff6ff 100%);
+  border: 1px solid #e5e7eb;
+  border-left: 6px solid #2563eb;
+  border-radius: 26px;
+  padding: 26px;
+  margin: 28px 0;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+}
+
+.insights-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.insights-icon {
+  width: 60px;
+  height: 60px;
+  display: grid;
+  place-items: center;
+  border-radius: 20px;
+  background: #dbeafe;
+  font-size: 1.7rem;
+}
+
+.insights-header h3 {
+  margin: 0;
+  color: #111827;
+  font-weight: 900;
+}
+
+.insights-header p {
+  margin: 4px 0 0;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.insights-lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+.insight-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 18px;
+  padding: 16px;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.insight-item-icon {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: #ffffff;
+  flex-shrink: 0;
+}
+
+.insight-item strong {
+  display: block;
+  color: #111827;
+  font-weight: 900;
+  margin-bottom: 4px;
+}
+
+.insight-item p {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.93rem;
+  font-weight: 600;
+}
+
+.insight-positivo {
+  border-left: 5px solid #16a34a;
+}
+
+.insight-alerta {
+  border-left: 5px solid #dc2626;
+}
+
+.insight-meta {
+  border-left: 5px solid #7c3aed;
+}
+
+.insight-neutro {
+  border-left: 5px solid #2563eb;
+}
+
+/* ESTATÍSTICAS FINANCEIRAS */
+
+.estatisticas-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid #e5e7eb;
+  border-left: 6px solid #0f172a;
+  border-radius: 26px;
+  padding: 26px;
+  margin: 28px 0;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+}
+
+.estatisticas-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.estatisticas-icon {
+  width: 60px;
+  height: 60px;
+  display: grid;
+  place-items: center;
+  border-radius: 20px;
+  background: #e2e8f0;
+  font-size: 1.7rem;
+}
+
+.estatisticas-header h3 {
+  margin: 0;
+  color: #111827;
+  font-weight: 900;
+}
+
+.estatisticas-header p {
+  margin: 4px 0 0;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.estatisticas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 14px;
+}
+
+.estatistica-item {
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.estatistica-item span {
+  display: block;
+  color: #64748b;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.estatistica-item strong {
+  display: block;
+  color: #111827;
+  font-weight: 950;
+  font-size: 1.15rem;
+}
+
+
+/* SAÚDE FINANCEIRA */
+
+.saude-card {
+  background: linear-gradient(135deg, #ffffff 0%, #fff7ed 100%);
+  border: 1px solid #e5e7eb;
+  border-left: 6px solid #f97316;
+  border-radius: 26px;
+  padding: 26px;
+  margin: 28px 0;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+}
+
+.saude-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.saude-icon {
+  width: 60px;
+  height: 60px;
+  display: grid;
+  place-items: center;
+  border-radius: 20px;
+  background: #ffedd5;
+  font-size: 1.7rem;
+}
+
+.saude-header h3 {
+  margin: 0;
+  color: #111827;
+  font-weight: 900;
+}
+
+.saude-header p,
+.saude-mensagem {
+  color: #64748b;
+  font-weight: 600;
+}
+
+.saude-nota {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.saude-nota strong {
+  font-size: 1.8rem;
+  font-weight: 950;
+  color: #111827;
+}
+
+.saude-nota p {
+  margin: 0;
+  font-weight: 900;
+  color: #f97316;
+}
+
+.saude-barra {
+  height: 16px;
+  background: #ffedd5;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+
+.saude-barra-progresso {
+  height: 100%;
+  background: linear-gradient(90deg, #f97316, #fb923c);
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+
+/* PAINEL DE RECORRÊNCIAS */
+
+.recorrencias-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid #e5e7eb;
+  border-left: 6px solid #2563eb;
+  border-radius: 26px;
+  padding: 26px;
+  margin: 28px 0;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+}
+
+.recorrencias-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.recorrencias-icon {
+  width: 60px;
+  height: 60px;
+  display: grid;
+  place-items: center;
+  border-radius: 20px;
+  background: #dbeafe;
+  font-size: 1.7rem;
+}
+
+.recorrencias-header h3 {
+  margin: 0;
+  color: #111827;
+  font-weight: 900;
+}
+
+.recorrencias-header p {
+  margin: 4px 0 0;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.recorrencias-lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+.recorrencia-item {
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  border-radius: 20px;
+  padding: 18px;
+  transition: 0.25s ease;
+}
+
+.recorrencia-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.1);
+}
+
+.recorrencia-receita {
+  border-left: 5px solid #16a34a;
+}
+
+.recorrencia-despesa {
+  border-left: 5px solid #dc2626;
+}
+
+.recorrencia-topo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.recorrencia-icone {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: #f8fafc;
+  font-size: 1.3rem;
+}
+
+.recorrencia-topo strong {
+  display: block;
+  color: #111827;
+  font-weight: 900;
+}
+
+.recorrencia-topo span {
+  color: #64748b;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.recorrencia-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.recorrencia-info span {
+  color: #111827;
+  font-size: 1.15rem;
+  font-weight: 950;
+}
+
+.recorrencia-info small {
+  color: #64748b;
+  font-weight: 800;
+}
+
+/* CALENDÁRIO FINANCEIRO */
+
+.calendario-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid #e5e7eb;
+  border-left: 6px solid #0891b2;
+  border-radius: 26px;
+  padding: 26px;
+  margin: 28px 0;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+}
+
+.calendario-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.calendario-icon {
+  width: 60px;
+  height: 60px;
+  display: grid;
+  place-items: center;
+  border-radius: 20px;
+  background: #cffafe;
+  font-size: 1.7rem;
+}
+
+.calendario-header h3 {
+  margin: 0;
+  color: #111827;
+  font-weight: 900;
+}
+
+.calendario-header p {
+  margin: 4px 0 0;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.calendario-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.calendario-dia {
+  min-height: 120px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 12px;
+}
+
+.calendario-dia strong {
+  display: block;
+  color: #111827;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.calendario-dia-com-evento {
+  border-color: #0891b2;
+  box-shadow: 0 10px 24px rgba(8, 145, 178, 0.12);
+}
+
+.calendario-eventos {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.calendario-evento {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px;
+  border-radius: 12px;
+  font-size: 0.78rem;
+}
+
+.calendario-evento small {
+  color: #334155;
+  font-weight: 800;
+}
+
+.calendario-evento em {
+  color: #111827;
+  font-style: normal;
+  font-weight: 900;
+}
+
+.calendario-evento-receita {
+  background: #dcfce7;
+}
+
+.calendario-evento-despesa {
+  background: #fee2e2;
+}
+
+.calendario-evento-meta {
+  background: #ede9fe;
+}
+
+/* CALENDÁRIO - MÊS E DIAS DA SEMANA */
+
+.calendario-mes {
+  margin-bottom: 14px;
+  padding: 14px 18px;
+  background: #ecfeff;
+  border: 1px solid #a5f3fc;
+  border-radius: 18px;
+}
+
+.calendario-mes h4 {
+  margin: 0;
+  color: #0e7490;
+  font-weight: 950;
+  text-transform: capitalize;
+}
+
+.calendario-semana {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.calendario-semana span {
+  text-align: center;
+  color: #475569;
+  font-weight: 900;
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 10px;
+}
+
+
+/* DASHBOARD EXECUTIVO */
+
+.executivo-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid #e5e7eb;
+  border-left: 6px solid #0f172a;
+  border-radius: 26px;
+  padding: 26px;
+  margin: 28px 0;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+}
+
+.executivo-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.executivo-icon {
+  width: 60px;
+  height: 60px;
+  display: grid;
+  place-items: center;
+  border-radius: 20px;
+  background: #e2e8f0;
+  font-size: 1.7rem;
+}
+
+.executivo-header h3 {
+  margin: 0;
+  color: #111827;
+  font-weight: 900;
+}
+
+.executivo-header p {
+  margin: 4px 0 0;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.executivo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 14px;
+}
+
+.executivo-item {
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.executivo-item span {
+  display: block;
+  color: #64748b;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.executivo-item strong {
+  display: block;
+  color: #111827;
+  font-weight: 950;
+  font-size: 1.15rem;
+}
+
+.executivo-item small {
+  display: block;
+  margin-top: 6px;
+  color: #64748b;
+  font-weight: 800;
+}
+
+.executivo-item-destaque {
+  border-left: 5px solid #2563eb;
+}
+
+/* INTELIGÊNCIA FINANCEIRA */
+
+.inteligencia-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f5f3ff 100%);
+  border: 1px solid #e5e7eb;
+  border-left: 6px solid #7c3aed;
+  border-radius: 26px;
+  padding: 26px;
+  margin: 28px 0;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+}
+
+.inteligencia-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.inteligencia-icon {
+  width: 60px;
+  height: 60px;
+  display: grid;
+  place-items: center;
+  border-radius: 20px;
+  background: #ede9fe;
+  font-size: 1.7rem;
+}
+
+.inteligencia-header h3 {
+  margin: 0;
+  color: #111827;
+  font-weight: 900;
+}
+
+.inteligencia-header p {
+  margin: 4px 0 0;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.inteligencia-lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+.inteligencia-item {
+  display: flex;
+  gap: 14px;
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 18px;
+  padding: 16px;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.inteligencia-item-icon {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: #ffffff;
+  flex-shrink: 0;
+}
+
+.inteligencia-item strong {
+  display: block;
+  color: #111827;
+  font-weight: 900;
+  margin-bottom: 4px;
+}
+
+.inteligencia-item p {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.93rem;
+  font-weight: 600;
+}
+
+.inteligencia-positivo {
+  border-left: 5px solid #16a34a;
+}
+
+.inteligencia-alerta {
+  border-left: 5px solid #dc2626;
+}
+
+.inteligencia-info {
+  border-left: 5px solid #2563eb;
+}
+
+.inteligencia-meta {
+  border-left: 5px solid #7c3aed;
+}
+
+/* PROJEÇÃO FINANCEIRA */
+
+.projecao-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+  border: 1px solid #e5e7eb;
+  border-left: 6px solid #0284c7;
+  border-radius: 26px;
+  padding: 26px;
+  margin: 28px 0;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+}
+
+.projecao-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.projecao-icon {
+  width: 60px;
+  height: 60px;
+  display: grid;
+  place-items: center;
+  border-radius: 20px;
+  background: #e0f2fe;
+  font-size: 1.7rem;
+}
+
+.projecao-header h3 {
+  margin: 0;
+  color: #111827;
+  font-weight: 900;
+}
+
+.projecao-header p {
+  margin: 4px 0 0;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.projecao-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 14px;
+}
+
+.projecao-item {
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.projecao-item span {
+  display: block;
+  color: #64748b;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.projecao-item strong {
+  display: block;
+  color: #111827;
+  font-weight: 950;
+  font-size: 1.15rem;
+}
+
+.projecao-destaque {
+  border-left: 5px solid #0284c7;
+}
+
+

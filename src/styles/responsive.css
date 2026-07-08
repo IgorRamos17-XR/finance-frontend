@@ -1,0 +1,222 @@
+
+@media (max-width: 992px) {
+  .graficos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .grafico-card-pizza {
+    grid-column: 1;
+  }
+
+  .grafico-pizza-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .grafico-card {
+    padding: 16px;
+    min-height: auto;
+  }
+
+  .grafico-container {
+    height: 320px;
+  }
+
+  .grafico-pizza-container {
+    height: 260px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .home-beneficios {
+    grid-template-columns: 1fr;
+  }
+
+  .home-card {
+    padding: 36px 22px;
+  }
+}
+
+
+@media (max-width: 576px) {
+  .auth-card {
+    padding: 34px 22px;
+  }
+}
+
+
+@media (max-width: 992px) {
+  .skeleton-cards-grid,
+  .skeleton-chart-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skeleton-filter-card,
+  .skeleton-filter-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+@media (max-width: 576px) {
+  .toast-financeiro {
+    top: 16px;
+    right: 16px;
+    left: 16px;
+    width: auto;
+  }
+}
+
+
+@media (max-width: 576px) {
+  .resumo-lista-premium-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .resumo-lista-premium-item:not(:last-child) {
+    border-right: none;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+  }
+}
+
+
+@media (max-width: 992px) {
+  .resumo-metas-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .resumo-metas-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+@media (max-width: 992px) {
+  .calendario-card {
+    overflow-x: auto;
+    padding: 18px;
+  }
+
+  .calendario-mes {
+    min-width: 760px;
+  }
+
+  .calendario-semana,
+  .calendario-grid {
+    min-width: 760px;
+    grid-template-columns: repeat(7, minmax(90px, 1fr));
+  }
+
+  .calendario-dia {
+    min-height: 110px;
+    padding: 10px;
+  }
+
+  .calendario-evento {
+    font-size: 0.72rem;
+    padding: 6px;
+  }
+}
+
+
+@media (max-width: 900px) {
+  .menu-financeiro {
+    padding: 8px 16px;
+    min-height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .menu-logo strong,
+  .menu-logo small {
+    display: none;
+  }
+
+  .menu-links {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .menu-link {
+    padding: 8px;
+    border-radius: 12px;
+  }
+
+  .menu-link span {
+    display: none;
+  }
+
+  .menu-tema-btn {
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    font-size: 0;
+    border-radius: 12px;
+  }
+
+  .menu-tema-btn::after {
+    content: "🌓";
+    font-size: 18px;
+  }
+}
+
+
+@media (max-width: 576px) {
+  .toast-financeiro {
+    top: 16px;
+    right: 16px;
+    left: 16px;
+    width: auto;
+  }
+}
+
+
+@media (max-width: 992px) {
+  .relatorios-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .relatorios-filtros {
+    min-width: 100%;
+  }
+
+  .relatorio-cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .relatorios-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+@media (max-width: 992px) {
+  .filtro-relatorio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filtro-botoes {
+    flex-direction: column;
+  }
+
+  .btn-filtro-aplicar,
+  .btn-filtro-limpar,
+  .btn-relatorio {
+    width: 100%;
+  }
+
+  .acoes-relatorio-grupo {
+    justify-content: stretch;
+  }
+}

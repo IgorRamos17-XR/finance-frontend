@@ -1,5 +1,6 @@
 import { useState } from "react";
 import dashboardService from "../services/dashboardService";
+import tratarErroApi from "../utils/tratarErroApi";
 
 function useDashboard() {
   const [despesasPorCategoria, setDespesasPorCategoria] = useState([]);
@@ -14,29 +15,32 @@ function useDashboard() {
   });
 
   async function buscarDashboardPorPeriodo(mostrarMensagem) {
-  if (!inicioFiltro || !fimFiltro) {
-    mostrarMensagem("Selecione as duas datas.", "danger");
-    return;
+    if (!inicioFiltro || !fimFiltro) {
+      mostrarMensagem("Selecione as duas datas.", "danger");
+      return;
+    }
+
+    try {
+      const response = await dashboardService.resumoPorPeriodo(
+        inicioFiltro,
+        fimFiltro,
+      );
+
+      setDashboard(response);
+    } catch (error) {
+      mostrarMensagem(
+        tratarErroApi(error, "Erro ao buscar resumo por período."),
+        "danger",
+      );
+    }
   }
 
-  try {
-    const response = await dashboardService.resumoPorPeriodo(
-      inicioFiltro,
-      fimFiltro
-    );
+  async function limparFiltroDashboard(atualizarDados) {
+    setInicioFiltro("");
+    setFimFiltro("");
 
-    setDashboard(response);
-  } catch {
-    mostrarMensagem("Erro ao buscar resumo por período", "danger");
+    await atualizarDados();
   }
-}
-
-async function limparFiltroDashboard(atualizarDados) {
-  setInicioFiltro("");
-  setFimFiltro("");
-
-  await atualizarDados();
-}
 
   return {
     despesasPorCategoria,

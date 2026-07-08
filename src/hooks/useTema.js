@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 
 function useTema() {
-  const [temaEscuro, setTemaEscuro] = useState(
-    localStorage.getItem("tema") === "escuro"
-  );
+  const [temaEscuro, setTemaEscuro] = useState(() => {
+  return localStorage.getItem("tema") === "escuro";
+});
 
   useEffect(() => {
     if (temaEscuro) {

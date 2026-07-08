@@ -53,7 +53,7 @@ function useReceitas() {
 
   function limparFormularioReceita() {
     setDescricao("");
-    setValor(null);
+    setValor("");
     setCategoria("");
     setData("");
     setEditandoId(null);
@@ -92,14 +92,12 @@ function useReceitas() {
 
       limparFormularioReceita();
       await atualizarDados();
-    } 
-    catch (error) {
+    } catch (error) {
       mostrarMensagem(
         tratarErroApi(error, "Erro ao cadastrar receita."),
         "danger",
       );
-    } 
-    finally {
+    } finally {
       setCarregandoReceita(false);
     }
   }
@@ -132,14 +130,12 @@ function useReceitas() {
 
       limparFormularioReceita();
       await atualizarDados();
-    } 
-    catch (error) {
+    } catch (error) {
       mostrarMensagem(
         tratarErroApi(error, "Erro ao atualizar receita."),
         "danger",
       );
-    } 
-    finally {
+    } finally {
       setCarregandoReceita(false);
     }
   }
@@ -151,13 +147,12 @@ function useReceitas() {
       mostrarMensagem("Receita excluída com sucesso!", "success");
 
       await atualizarDados();
-    } 
-    catch (error) {
-  mostrarMensagem(
-    tratarErroApi(error, "Erro ao excluir receita."),
-    "danger",
-  );
-}
+    } catch (error) {
+      mostrarMensagem(
+        tratarErroApi(error, "Erro ao excluir receita."),
+        "danger",
+      );
+    }
   }
 
   return {

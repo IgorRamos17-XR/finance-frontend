@@ -1,7 +1,19 @@
 import { useEffect } from "react";
 import useDadosFinanceiros from "./hooks/useDadosFinanceiros";
 import "./App.css";
+import "./styles/menu.css";
 import "./styles/dashboard.css";
+import "./styles/dashboard-advanced.css";
+import "./styles/reports.css";
+import "./styles/forms.css";
+import "./styles/lists.css";
+import "./styles/theme.css";
+import "./styles/utilities.css";
+import "./styles/responsive.css";
+import "./styles/auth.css";
+import "./styles/skeleton.css";
+import "./styles/feedback.css";
+import "./styles/pagination.css";
 
 import { formatarMoeda, formatarData } from "./utils/formatadores";
 import useAuthContext from "./hooks/useAuthContext";
@@ -11,7 +23,7 @@ import useMetas from "./hooks/useMetas";
 import useDashboard from "./hooks/useDashboard";
 import useGraficos from "./hooks/useGraficos";
 import BotaoSair from "./components/BotaoSair";
-import Layout from "./components/Layout";
+import Layout from "./layouts/Layout";
 import DashboardPage from "./pages/DashboardPage";
 import FinancePage from "./pages/FinancePage";
 import PainelFinanceiro from "./components/PainelFinanceiro";
@@ -25,7 +37,6 @@ import useListaProps from "./hooks/useListaProps";
 import PainelAnalitico from "./components/PainelAnalitico";
 import PainelFormularios from "./components/PainelFormularios";
 import PainelListas from "./components/PainelListas";
-
 
 function App() {
   const { sair, limparSessao } = useAuthContext();

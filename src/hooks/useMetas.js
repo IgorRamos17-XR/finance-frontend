@@ -24,7 +24,10 @@ function useMetas() {
     e.preventDefault();
 
     if (!descricaoMeta || !valorObjetivo || !dataLimite) {
-      mostrarMensagem("Preencha descrição, valor objetivo e data limite.", "danger");
+      mostrarMensagem(
+        "Preencha descrição, valor objetivo e data limite.",
+        "danger",
+      );
       return;
     }
 
@@ -45,21 +48,22 @@ function useMetas() {
       mostrarMensagem("Meta cadastrada com sucesso!", "success");
       limparFormularioMeta();
       await atualizarMetas();
-    } 
-    catch (error) {
+    } catch (error) {
       mostrarMensagem(
         tratarErroApi(error, "Erro ao cadastrar meta."),
         "danger",
       );
-    } 
-    finally {
+    } finally {
       setCarregandoMeta(false);
     }
   }
 
   async function editarMeta(id, atualizarMetas, mostrarMensagem) {
     if (!descricaoMeta || !valorObjetivo || !dataLimite) {
-      mostrarMensagem("Preencha descrição, valor objetivo e data limite.", "danger");
+      mostrarMensagem(
+        "Preencha descrição, valor objetivo e data limite.",
+        "danger",
+      );
       return;
     }
 
@@ -82,14 +86,12 @@ function useMetas() {
       mostrarMensagem("Meta atualizada com sucesso!", "success");
       limparFormularioMeta();
       await atualizarMetas();
-    } 
-    catch (error) {
-  mostrarMensagem(
-    tratarErroApi(error, "Erro ao atualizar meta."),
-    "danger",
-  );
-}
-     finally {
+    } catch (error) {
+      mostrarMensagem(
+        tratarErroApi(error, "Erro ao atualizar meta."),
+        "danger",
+      );
+    } finally {
       setCarregandoMeta(false);
     }
   }
@@ -99,12 +101,8 @@ function useMetas() {
       await metasService.excluir(id);
       mostrarMensagem("Meta excluída com sucesso!", "success");
       await atualizarMetas();
-    } 
-    catch (error) {
-      mostrarMensagem(
-        tratarErroApi(error, "Erro ao excluir meta."),
-        "danger",
-      );
+    } catch (error) {
+      mostrarMensagem(tratarErroApi(error, "Erro ao excluir meta."), "danger");
     }
   }
 

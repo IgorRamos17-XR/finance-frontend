@@ -1,0 +1,101 @@
+/*ANIMAÇÕES GERAIS */
+
+.fade-up {
+  animation: fadeUp 0.45s ease;
+}
+
+.fade-in {
+  animation: fadeIn 0.35s ease;
+}
+
+.scale-in {
+  animation: scaleIn 0.35s ease;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Hover elegante */
+
+.dashboard-card,
+.grafico-card,
+.movimento-card,
+.form-finance-card,
+.relatorio-card,
+.relatorio-chart-card,
+.painel-filtros,
+.empty-state-card {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.dashboard-card:hover,
+.grafico-card:hover,
+.movimento-card:hover,
+.form-finance-card:hover,
+.relatorio-card:hover,
+.relatorio-chart-card:hover,
+.painel-filtros:hover,
+.empty-state-card:hover {
+  transform: translateY(-3px);
+
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
+}
+
+/* MICROINTERAÇÕES DOS BOTÕES */
+
+button,
+.home-btn,
+.menu-link,
+.auth-link {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:active,
+.home-btn:active,
+.menu-link:active {
+  transform: scale(0.97);
+}
+
+.movimento-btn:active,
+.form-btn:active,
+.paginacao-btn:active,
+.paginacao-numero:active,
+.dashboard-btn-filtrar:active,
+.dashboard-btn-limpar:active,
+.painel-filtros-limpar:active {
+  transform: scale(0.96);
+}

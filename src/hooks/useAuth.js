@@ -2,14 +2,20 @@ import { useState } from "react";
 import authService from "../services/authService";
 import { useNavigate } from "react-router-dom";
 
+function obterUsuarioSalvo() {
+  try {
+    return JSON.parse(localStorage.getItem("usuario"));
+  } catch {
+    return null;
+  }
+}
+
 function useAuth() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [token, setToken] = useState(localStorage.getItem("token"));
 
-  const [usuario, setUsuario] = useState(
-    JSON.parse(localStorage.getItem("usuario")),
-  );
+  const [usuario, setUsuario] = useState(obterUsuarioSalvo);
 
   const [modoCadastro, setModoCadastro] = useState(false);
 
