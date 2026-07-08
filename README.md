@@ -87,14 +87,6 @@ finance-frontend
 - Node.js 20+
 - npm
 
----
-
-## Clonar o repositório
-
-```bash
-git clone https://github.com/igordesouzaramos14/finance-frontend.git
-```
-
 Entre na pasta:
 
 ```bash
@@ -169,13 +161,7 @@ As requisições autenticadas utilizam automaticamente o token JWT armazenado no
 
 # 👨‍💻 Autor
 
-Desenvolvido por **Igor Souza Ramos**.
-
-GitHub:
-
-https://github.com/igordesouzaramos14
-
----
+Desenvolvido por **IgorRamos**.
 
 ⭐ Se este projeto foi útil ou interessante, considere deixar uma estrela no repositório.
 
