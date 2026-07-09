@@ -2,6 +2,7 @@ import { useState } from "react";
 
 function CalendarioFinanceiro({ receitas, despesas, metas, formatarMoeda }) {
   const hoje = new Date();
+
   const [dataCalendario, setDataCalendario] = useState(
     new Date(hoje.getFullYear(), hoje.getMonth(), 1),
   );
@@ -10,18 +11,22 @@ function CalendarioFinanceiro({ receitas, despesas, metas, formatarMoeda }) {
   const mesAtual = dataCalendario.getMonth();
 
   const diasNoMes = new Date(anoAtual, mesAtual + 1, 0).getDate();
+  const primeiroDiaSemana = new Date(anoAtual, mesAtual, 1).getDay();
 
-  const dias = Array.from({ length: diasNoMes }, (_, index) => index + 1);
+  const dias = [
+    ...Array.from({ length: primeiroDiaSemana }, () => null),
+    ...Array.from({ length: diasNoMes }, (_, index) => index + 1),
+  ];
 
- const nomeMes = dataCalendario.toLocaleDateString("pt-BR", {
-  month: "long",
-  year: "numeric",
-});
+  const nomeMes = dataCalendario.toLocaleDateString("pt-BR", {
+    month: "long",
+    year: "numeric",
+  });
 
   const diasSemana = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
 
   function mesmoDia(data, dia) {
-    if (!data) return false;
+    if (!data || !dia) return false;
 
     const dataTexto = data.split("T")[0];
     const [ano, mes, diaData] = dataTexto.split("-").map(Number);
@@ -78,26 +83,18 @@ function CalendarioFinanceiro({ receitas, despesas, metas, formatarMoeda }) {
 
         <div>
           <h3>Calendário Financeiro</h3>
-          <p>Visualize receitas, despesas e metas do mês atual.</p>
+          <p>Visualize receitas, despesas e metas do mês selecionado.</p>
         </div>
       </div>
 
       <div className="calendario-mes d-flex justify-content-between align-items-center">
-        <button
-          type="button"
-          className="btn btn-sm btn-outline-primary"
-          onClick={mesAnterior}
-        >
+        <button type="button" className="btn btn-sm btn-outline-primary" onClick={mesAnterior}>
           ← Mês anterior
         </button>
 
         <h4>{nomeMes}</h4>
 
-        <button
-          type="button"
-          className="btn btn-sm btn-outline-primary"
-          onClick={proximoMes}
-        >
+        <button type="button" className="btn btn-sm btn-outline-primary" onClick={proximoMes}>
           Próximo mês →
         </button>
       </div>
@@ -109,7 +106,11 @@ function CalendarioFinanceiro({ receitas, despesas, metas, formatarMoeda }) {
       </div>
 
       <div className="calendario-grid">
-        {dias.map((dia) => {
+        {dias.map((dia, index) => {
+          if (!dia) {
+            return <div key={`vazio-${index}`} className="calendario-dia calendario-dia-vazio"></div>;
+          }
+
           const eventos = eventosDoDia(dia);
 
           return (
