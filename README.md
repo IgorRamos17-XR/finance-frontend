@@ -87,6 +87,14 @@ finance-frontend
 - Node.js 20+
 - npm
 
+---
+
+## Clonar o repositório
+
+```bash
+git clone https://github.com/igordesouzaramos14/finance-frontend.git
+```
+
 Entre na pasta:
 
 ```bash
@@ -157,11 +165,57 @@ As requisições autenticadas utilizam automaticamente o token JWT armazenado no
 - [ ] Internacionalização (i18n)
 - [ ] Testes automatizados
 
+# 📸 Preview
+
+## 🔐 Login
+
+![Login](assets/login.png)
+
 ---
+
+## 👤 Cadastro
+
+![Cadastro](assets/cadastro.png)
+
+---
+
+## 📊 Dashboard
+
+![Dashboard](assets/dashboard.png)
+
+---
+
+## 💰 Nova Receita
+
+![Nova Receita](assets/nova-receita.png)
+
+---
+
+## 🛒 Nova Despesa
+
+![Nova Despesa](assets/nova-despesa.png)
+
+---
+
+## 🎯 Nova Meta
+
+![Nova Meta](assets/nova-meta.png)
+
+---
+
+## 📈 Relatórios
+
+![Relatórios](assets/relatorios.png)
+
+---
+
+## 🌙 Tema Escuro
+
+![Tema Escuro](assets/tema-escuro.png)
 
 # 👨‍💻 Autor
 
-Desenvolvido por **IgorRamos**.
+Desenvolvido por **Igor Ramos**.
 
 ⭐ Se este projeto foi útil ou interessante, considere deixar uma estrela no repositório.
 
