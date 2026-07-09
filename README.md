@@ -211,7 +211,7 @@ As requisições autenticadas utilizam automaticamente o token JWT armazenado no
 
 ## 🌙 Tema Escuro
 
-![Tema Escuro](Assets/TemaEscuro.PNG)
+![Tema Escuro](assets/TemaEscuro.PNG)
 
 # 👨‍💻 Autor
 
