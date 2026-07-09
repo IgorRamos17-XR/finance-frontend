@@ -169,49 +169,49 @@ As requisições autenticadas utilizam automaticamente o token JWT armazenado no
 
 ## 🔐 Login
 
-![Login](assets/login.png)
+![Login](assets/Login.PNG)
 
 ---
 
 ## 👤 Cadastro
 
-![Cadastro](assets/cadastro.png)
+![Cadastro](assets/Cadastro.PNG)
 
 ---
 
 ## 📊 Dashboard
 
-![Dashboard](assets/dashboard.png)
+![Dashboard](assets/Dashboard.PNG)
 
 ---
 
 ## 💰 Nova Receita
 
-![Nova Receita](assets/nova-receita.png)
+![Nova Receita](assets/NovaReceita.PNG)
 
 ---
 
 ## 🛒 Nova Despesa
 
-![Nova Despesa](assets/nova-despesa.png)
+![Nova Despesa](assets/NovaDespesa.PNG)
 
 ---
 
 ## 🎯 Nova Meta
 
-![Nova Meta](assets/nova-meta.png)
+![Nova Meta](assets/NovaMeta.PNG)
 
 ---
 
 ## 📈 Relatórios
 
-![Relatórios](assets/relatorios.png)
+![Relatórios](assets/Relatorios.PNG)
 
 ---
 
 ## 🌙 Tema Escuro
 
-![Tema Escuro](assets/tema-escuro.png)
+![Tema Escuro](Assets/TemaEscuro.PNG)
 
 # 👨‍💻 Autor
 
